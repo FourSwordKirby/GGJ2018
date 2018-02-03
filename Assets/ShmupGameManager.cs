@@ -67,6 +67,5 @@ public class ShmupGameManager : MonoBehaviour {
         player.Spawn(closestSpawn);
         GameObject anim = Instantiate(warpAnim);
         anim.transform.position = player.transform.position;
-        Debug.Log(anim.transform.position);
     }
 }

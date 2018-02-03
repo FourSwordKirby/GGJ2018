@@ -45,16 +45,22 @@ public class ShmupPlayer : ShmupEntity {
             return;
 
         //Movement
-        Vector2 dir = Controls.getDirection();
-        this.selfBody.velocity = (Vector3.right * dir.x + Vector3.forward*dir.y) * speed;
+        Vector2 moveDir = Controls.getDirection();
+        this.selfBody.velocity = (Vector3.right * moveDir.x + Vector3.forward*moveDir.y) * speed;
 
         //Rotation
-        Vector2 dirVector = Controls.getAimDirection();
+        Vector2 aimDir = Controls.getAimDirection();
 
-        if(dirVector.magnitude != 0)
+        if(aimDir.magnitude >= 0.8)
         {
-            currentRotation = Mathf.Atan(dirVector.x / dirVector.y) * Mathf.Rad2Deg;
-            if (dirVector.y < 0)
+            currentRotation = Mathf.Atan(aimDir.x / aimDir.y) * Mathf.Rad2Deg;
+            if (aimDir.y < 0)
+                currentRotation += 180;
+        }
+        else
+        {
+            currentRotation = Mathf.Atan(moveDir.x / moveDir.y) * Mathf.Rad2Deg;
+            if (moveDir.y < 0)
                 currentRotation += 180;
         }
 

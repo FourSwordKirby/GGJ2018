@@ -26,19 +26,22 @@ public class Controls {
         return Parameters.vectorToDirection(getDirection());
     }
 
-    internal static Vector2 getAimDirection()
+    public static Vector2 getAimDirection()
     {
         float xAxis = 0;
         float yAxis = 0;
 
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > Mathf.Abs(Input.GetAxis("AimX")))
-            xAxis = Input.GetAxis("Horizontal");
-        else
+        if (Mathf.Abs(Input.GetAxis("AimX")) > Mathf.Abs(Input.GetAxis("Keyboard AimX")))
             xAxis = Input.GetAxis("AimX");
-        if (Mathf.Abs(Input.GetAxis("Vertical")) > Mathf.Abs(Input.GetAxis("AimY")))
-            yAxis = Input.GetAxis("Vertical");
         else
+            xAxis = Input.GetAxis("Keyboard AimX");
+
+        if (Mathf.Abs(Input.GetAxis("AimY")) > Mathf.Abs(Input.GetAxis("Keyboard AimY")))
             yAxis = Input.GetAxis("AimY");
+        else
+            yAxis = Input.GetAxis("Keyboard AimY");
+
+        Debug.Log(yAxis);
 
         return new Vector2(xAxis, yAxis);
     }
