@@ -1,0 +1,19 @@
+[>l Pilot] Pilot: Flying over Pakistan, altitude 30,000 feet. Approaching Soviet airspace.
+
+Twenty minutes to dropoff... Commencing internal depressurization.
+
+Equipment check... arm main parachute.
+
+Pilot: Drop zone still showing a high pressure mass. Cloud and Visibility OK.
+
+Pilot: Put out that cigar. Connecting oxygen hose to interior connector. 
+
+[>r Snake] Snake: ...
+
+Pilot: Put on your mask. 
+
+Snake: ...
+
+[!1 Pilot] Pilot: Does this pantywaist know what he's doing?
+
+[<l Pilot, <r Snake]
