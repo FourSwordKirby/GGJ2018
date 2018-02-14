@@ -47,6 +47,57 @@ public class ShmupGameManager : MonoBehaviour {
         //DialogEngine.instance.startConversation(dialog);
     }
 
+    public IEnumerator PlayCutscene(TextAsset dialog, bool withPortraits)
+    {
+        ConversationPause();
+        while (Letterbox.instance.isOn)
+            yield return null;
+        DialogEngine.instance.StartDialog(dialog, withPortraits);
+
+        while(DialogEngine.instance.currentlyActive)
+            yield return null;
+
+        ConversationUnpause();
+        yield return null;
+    }
+
+    public IEnumerator StartConversation(TextAsset dialog, bool withPortraits)
+    {
+        DialogEngine.instance.StartDialog(dialog, withPortraits);
+        yield return null;
+    }
+
+    private void ConversationPause()
+    {
+        PauseGameplay();
+        StartCoroutine(Letterbox.instance.TurnOn(2.0f));
+    }
+    private void ConversationUnpause()
+    {
+        StartCoroutine(Letterbox.instance.TurnOff(2.0f));
+        ResumeGameplay();
+    }
+
+    private void MenuPause()
+    {
+        PauseGameplay();
+        StartCoroutine(Letterbox.instance.TurnOn(2.0f));
+        //Display a pause menu or something
+    }
+
+    private void PauseGameplay()
+    {
+        Time.timeScale = 0.0f;
+        Controls.DisableGameplayControls();
+    }
+
+    private void ResumeGameplay()
+    {
+        Time.timeScale = 1.0f;
+        Controls.EnableGameplayControls();
+    }
+
+
     public void RespawnPlayer()
     {
         SpawnPoint closestSpawn = spawnPoints[0];

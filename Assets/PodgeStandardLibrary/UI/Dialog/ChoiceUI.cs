@@ -35,7 +35,7 @@ public class ChoiceUI : MonoBehaviour {
                 currentChoice = 0;
             GameManager.instance.playSound(SoundType.Menu, "MenuToggle");
         }
-        if (Controls.confirmInputDown())
+        if (Controls.dialogAdvanceDown())
         {
             choiceMade = true;
             GameManager.instance.playSound(SoundType.Menu, "MenuSelect");

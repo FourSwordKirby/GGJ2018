@@ -4,8 +4,23 @@ using System;
 
 public class Controls {
 
+    private static bool gameplayEnabled = true;
+
+    public static void DisableGameplayControls()
+    {
+        gameplayEnabled = false;
+    }
+
+    public static void EnableGameplayControls()
+    {
+        gameplayEnabled = true;
+    }
+
     public static Vector2 getDirection()
     {
+        if (!gameplayEnabled)
+            return Vector2.zero;
+
         float xAxis = 0;
         float yAxis = 0;
 
@@ -28,6 +43,9 @@ public class Controls {
 
     public static Vector2 getAimDirection()
     {
+        if (!gameplayEnabled)
+            return Vector2.zero;
+
         float xAxis = 0;
         float yAxis = 0;
 
@@ -41,18 +59,21 @@ public class Controls {
         else
             yAxis = Input.GetAxis("Keyboard AimY");
 
-        Debug.Log(yAxis);
-
         return new Vector2(xAxis, yAxis);
     }
 
     internal static bool shootInputHeld()
     {
+        if (!gameplayEnabled)
+            return false;
         return Input.GetButton("Shoot");
     }
 
     public static bool DirectionDown(Parameters.InputDirection dir)
     {
+        if (!gameplayEnabled)
+            return false;
+
         //Hacky, probably should fix to be correct later
         Parameters.InputDirection currentInput = getInputDirection();
         return currentInput == dir;
@@ -60,10 +81,13 @@ public class Controls {
 
     internal static bool bombInputDown()
     {
-        return Input.GetButton("Bomb");
+        if (!gameplayEnabled)
+            return false;
+
+        return Input.GetButtonDown("Bomb");
     }
 
-    public static bool confirmInputDown()
+    public static bool dialogAdvanceDown()
     {
         return Input.GetButtonDown("Confirm");
     }
@@ -75,21 +99,33 @@ public class Controls {
 
     public static bool confirmInputHeld()
     {
+        if (!gameplayEnabled)
+            return false;
+
         return Input.GetButton("Confirm");
     }
 
     public static bool cancelInputHeld()
     {
+        if (!gameplayEnabled)
+            return false;
+
         return Input.GetButton("Cancel");
     }
 
     public static bool pauseInputDown()
     {
+        if (!gameplayEnabled)
+            return false;
+
         return Input.GetButtonDown("Pause");
     }
 
     public static bool pauseInputHeld()
     {
+        if (!gameplayEnabled)
+            return false;
+
         return Input.GetButton("Pause");
     }
 }

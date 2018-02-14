@@ -17,6 +17,11 @@ public class VisualNovelCharacterController : MonoBehaviour {
     {
         VisualNovelCharacterUI portrait = loadedCharacters.Find(x => x.characterName == characterName);
         if (dir == Direction.Left)
+            portrait.side = VisualNovelCharacterUI.StageSide.Left;
+        if (dir == Direction.Right)
+            portrait.side = VisualNovelCharacterUI.StageSide.Right;
+
+        if (dir == Direction.Left)
             StartCoroutine(TweenInCharacter(portrait, leftWingPosition.transform.position, leftPosition.transform.position));
         if (dir == Direction.Right)
             StartCoroutine(TweenInCharacter(portrait, rightWingPosition.transform.position, rightPosition.transform.position));
@@ -25,6 +30,11 @@ public class VisualNovelCharacterController : MonoBehaviour {
     public void Exit(string characterName, Direction dir)
     {
         VisualNovelCharacterUI portrait = loadedCharacters.Find(x => x.characterName == characterName);
+        if (dir == Direction.Left)
+            portrait.side = VisualNovelCharacterUI.StageSide.Left;
+        if (dir == Direction.Right)
+            portrait.side = VisualNovelCharacterUI.StageSide.Right;
+
         if (dir == Direction.Left)
             StartCoroutine(TweenOutCharacter(portrait, leftPosition.transform.position, leftWingPosition.transform.position));
         if (dir == Direction.Right)
@@ -40,10 +50,11 @@ public class VisualNovelCharacterController : MonoBehaviour {
         portrait.transform.position = FromPosition;
         while(counter < tweenLength)
         {
-            counter += Time.deltaTime;
+            print(UI.deltaTime);
+            counter += UI.deltaTime;
             portrait.spriteRenderer.color = Color.Lerp(Color.clear, Color.white, counter / tweenLength);
             portrait.transform.position = Vector3.Lerp(FromPosition, ToPosition, counter / tweenLength);
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
         portrait.inScene = true;
         yield return null;
@@ -57,10 +68,10 @@ public class VisualNovelCharacterController : MonoBehaviour {
         portrait.transform.position = FromPosition;
         while (counter < tweenLength)
         {
-            counter += Time.deltaTime;
+            counter += UI.deltaTime;
             portrait.spriteRenderer.color = Color.Lerp(Color.white, Color.clear, counter / tweenLength);
             portrait.transform.position = Vector3.Lerp(FromPosition, ToPosition, counter / tweenLength);
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
         yield return null;
     }
@@ -101,7 +112,7 @@ public class VisualNovelCharacterController : MonoBehaviour {
 
         while (counter < tweenLength)
         {
-            counter += Time.deltaTime;
+            counter += UI.deltaTime;
             portrait.spriteRenderer.color = Color.Lerp(portrait.spriteRenderer.color, Color.white, counter / tweenLength);
             yield return new WaitForSeconds(0.01f);
         }
@@ -114,15 +125,26 @@ public class VisualNovelCharacterController : MonoBehaviour {
         
         while (counter < tweenLength)
         {
-            counter += Time.deltaTime;
+            counter += UI.deltaTime;
             portrait.spriteRenderer.color = Color.Lerp(portrait.spriteRenderer.color, Color.white * 0.7f, counter / tweenLength);
             yield return new WaitForSeconds(0.01f);
         }
         yield return null;
     }
 
-
-
+    public void ExitAllCharacters()
+    {
+        foreach (VisualNovelCharacterUI c in loadedCharacters)
+        {
+            if (c.inScene)
+            {
+                if (c.side == VisualNovelCharacterUI.StageSide.Left)
+                    Exit(c.characterName, Direction.Left);
+                if (c.side == VisualNovelCharacterUI.StageSide.Right)
+                    Exit(c.characterName, Direction.Right);
+            }
+        }
+    }
 
     public void Open()
     {
@@ -131,7 +153,7 @@ public class VisualNovelCharacterController : MonoBehaviour {
 
     public void Close()
     {
-        this.gameObject.SetActive(false);
+        ExitAllCharacters();
     }
 
     public enum Direction

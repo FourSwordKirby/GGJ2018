@@ -13,13 +13,23 @@ public class Encounter : MonoBehaviour {
 	public void StartEncounter () {
         if (!started)
         {
-            this.gameObject.SetActive(true);
+            EnableEncounter();
             started = true;
             foreach (ShmupEnemy enemy in enemies)
             {
                 enemy.Spawn();
             }
         }
+    }
+
+    public void EnableEncounter()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+    public void DisableEncounter()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void Update()

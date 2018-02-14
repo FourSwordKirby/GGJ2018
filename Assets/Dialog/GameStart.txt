@@ -1,19 +1,24 @@
-[>l Pilot] Pilot: Flying over Pakistan, altitude 30,000 feet. Approaching Soviet airspace.
+[>l Circe]: Circe: Ugh, headache. 
 
-Twenty minutes to dropoff... Commencing internal depressurization.
+Kali: This is Kali connecting in. Hacker C.R.C., are you in?
 
-Equipment check... arm main parachute.
+Circe: Hah... formal as always aren't you, Kali? As a childhood friend, I'm deeply hurt when you address me like that-
 
-Pilot: Drop zone still showing a high pressure mass. Cloud and Visibility OK.
+[>r Kali]: Kali: N-no! That is just a standard procedure! A-anyways, did you make in alright... Circe?
 
-Pilot: Put out that cigar. Connecting oxygen hose to interior connector. 
+Circe: No problems here. Just a slight headache. Probably because my damn boss has been making me work overtime on a useless feature for our website.
 
-[>r Snake] Snake: ...
+Kali: (worried) Oh... You can take a rest for today Circe! If it will endanger the mission-
 
-Pilot: Put on your mask. 
+Circe: Shut it. I've been waiting all day for this hack.
+	You said this was a big job didn't you? I can't wait to beat digital hell into some security programs.
 
-Snake: ...
+Kali: O-oh... Don't push yourself, okay?
+	But yes, we have been hired this time to perform a high-risk infiltration to extract sensitive data.
+	I logged you on as the super user account for a machine in one of the target's server clusters.
+	
+Circe: Man, even though we have the tech to link our brain signals into a computer, how come my virtual avatar is still so... blocky?
 
-[!1 Pilot] Pilot: Does this pantywaist know what he's doing?
-
-[<l Pilot, <r Snake]
+Kali: I-It was the best I could do! I've told you a bunch of times I know I don't how to model cute things-
+	AHEM! I have outfitted you with a Datagram Transport Cannon.
+	For now, let us try moving to another server cluster. Repeatedly shoot the port to the north to upload yourself to the next server cluster. 

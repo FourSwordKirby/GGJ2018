@@ -37,7 +37,6 @@ public class Barrier : ShmupEntity
 
 
                 signal.velocity = dirVector.x * Vector3.right + upMagnitude * Vector3.up + dirVector.z * Vector3.forward;
-
             }
         }
     }

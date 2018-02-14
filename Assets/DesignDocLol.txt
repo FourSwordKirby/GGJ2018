@@ -1,21 +1,8 @@
-Account: The current player entity
-Account Strikes: The HP of our player
-Disassembly Cannon/Transmission Protocol: The "gun" of the player. It shoots requests. Security is eliminated by requests as they receive credentials that
-show you are a trustworthy user. When you are hit by the enemies "requests" they are able to determine your identity and you gain an account strike
 
-Proposed Game Mechanic: Sever exploits
-	Basically screen clear bombs, picked up from enemies/destructibles (You discover weak points in the system which can be targeted)
-	
-	Idea to test: After using, the screen colors get inverted temporarily. During this time, you can destroy enemies/somehow restore your health
-			After that short period of time, the immediate room/nearby world reboots
 
-	When using the bomb, the area around you gets scrambled (this is due to you resetting the local cluster)
+TODO:
 
-Keygens: Stations you can use to gain more admin passwords. Requires the player to shoot at them for a continuous period of time
-(ie, the credentials need to be generated and sent over)
-
-Ports: Spawn points. These are basically bases that the player can "capture" to gain a spawn point. Ports allow the player to
-get a new account and restore account strikes.
-
-Firewalls: Refers to when entryways are closed off and the player is stuck in a room. Basically refers to indestructible barriers
-Security system: The enemies of the game.
+Dialog without pausing
+Dialog with pausing
+Letterbox in cutscene mode
+Camera pan system

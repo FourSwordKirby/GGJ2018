@@ -1,0 +1,7 @@
+Kali: Be careful, Circe. My initial scans have shown that security programs protect the next server.
+Circe: Haha! Bring it! I've been waiting to blast some bots with this cannon.
+Kali: I know you are excited, but their Validation Bullets will chip away the fake Credentials your using!
+	If you lose all your Credentials, you will be forcibly logged out!
+Circe: Ah... right, and depending on how far I am from my home network, the neural shock might knock me out for a few days...
+Kali: Considering your job, that probably would not be a good idea...
+	In any case, I timed our arrival for when the least number of security programs were running! Good luck Circe!

@@ -8,8 +8,9 @@ public class Barricade : ShmupEntity {
     public int hackingProgress;
     public bool destroyed;
 
-    public GameObject model;
 
+    public GameObject model;
+    
     // Update is called once per frame
     void Update()
     {

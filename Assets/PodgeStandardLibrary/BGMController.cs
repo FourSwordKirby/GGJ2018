@@ -15,7 +15,7 @@ public class BGMController : MonoBehaviour {
         {
             timer += Time.deltaTime;
             audioSrc.volume = Mathf.Lerp(startingVolume, targetVolume, timer / duration);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForEndOfFrame();
         }
         yield return null;
     }

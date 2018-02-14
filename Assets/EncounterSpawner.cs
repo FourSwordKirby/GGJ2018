@@ -7,6 +7,14 @@ public class EncounterSpawner : MonoBehaviour {
     int waveNumber = 0;
     bool started;
 
+    public void Awake()
+    {
+        foreach(Encounter e in encounters)
+        {
+            e.DisableEncounter();
+        }
+    }
+
     public void StartEncounter()
     {
         if (!started)
@@ -19,10 +27,7 @@ public class EncounterSpawner : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            StartEncounter();
-
-        if(started && encounters[waveNumber].completed)
+        if (started && encounters[waveNumber].completed)
         {
             waveNumber++;
             if(waveNumber < encounters.Count)

@@ -1,0 +1,6 @@
+
+Circe: "Cold"? Do you just mean its unused?
+
+Kali: Yes! Some of the links we come across are rarely used. They become "cold" and get re-routed to a  dead-end, because nobody needs data from the other side of the link.
+
+Kali: If we bombard the Cache Pillar with requests, the system will think people need the data again. The link "heats up" and gets put back on a "hot path" back to the main network!

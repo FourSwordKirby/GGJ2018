@@ -11,9 +11,16 @@ public class VisualNovelCharacterUI : MonoBehaviour {
 
     public Image spriteRenderer;
     public bool inScene;
+    public StageSide side;
 
     public void Awake()
     {
         this.spriteRenderer = this.GetComponent<Image>();
+    }
+
+    public enum StageSide
+    {
+        Left,
+        Right
     }
 }

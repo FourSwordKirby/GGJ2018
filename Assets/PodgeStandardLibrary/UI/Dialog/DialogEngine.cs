@@ -9,6 +9,8 @@ public class DialogEngine : MonoBehaviour
     public DialogUI dialogUI;
     public VisualNovelCharacterController characterController;
 
+    public bool currentlyActive;
+
     public void Start()
     {
         if (instance == null)
@@ -22,11 +24,13 @@ public class DialogEngine : MonoBehaviour
         }
     }
 
-    public void startConversation(TextAsset dialog)
+    public void StartDialog(TextAsset dialog, bool displayPortraits)
     {
+        currentlyActive = true;
         List<string> dialogComponents = CreateDialogComponents(dialog.text);
 
-        StartCoroutine(displayDialog(dialogComponents));
+        if(displayPortraits)
+            StartCoroutine(displayDialog(dialogComponents));
     }
 
 
@@ -83,25 +87,33 @@ public class DialogEngine : MonoBehaviour
 
             //Showing dialog
             dialogUI.displayDialog(dialog, speaker);
-            yield return new WaitForSeconds(0.1f);
+            print("running");
+
+            yield return null;
 
             while (!dialogUI.dialogCompleted)
             {
-                if (Controls.confirmInputDown())
+                if (Controls.dialogAdvanceDown())
                     dialogUI.resolveDialog();
-                yield return new WaitForSeconds(0.01f);
+                yield return null;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForEndOfFrame();
             //Replace this with things in the control set
-            while (!Controls.confirmInputDown())
+            while (true)
             {
-                yield return new WaitForSeconds(0.01f);
+                if (Controls.dialogAdvanceDown())
+                    break;
+                yield return null;
             }
+            print("next");
         }
 
+        print("We finished");
         characterController.Close();
         dialogUI.Close();
+
+        currentlyActive = false;
 
         yield return null;
     }

@@ -36,7 +36,7 @@ public class DialogUI : MonoBehaviour
     void Update()
     {
         //Skip dialog if confirm button is pressed again
-        if (Controls.confirmInputDown())
+        if (Controls.dialogAdvanceDown())
         {
             setSpeed(DisplaySpeed.immediate);
         }
@@ -45,7 +45,7 @@ public class DialogUI : MonoBehaviour
         //Do something where text appears according to the textDisplaySpeed
         if (textDisplayTimer > 0)
         {
-            textDisplayTimer -= Time.deltaTime;
+            textDisplayTimer -= UI.deltaTime;
             return;
         }
 
@@ -113,6 +113,8 @@ public class DialogUI : MonoBehaviour
 
     public void Close()
     {
+
+
         this.gameObject.SetActive(false);
         //this.dialog = "";
         this.dialogTracker = 0;

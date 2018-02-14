@@ -50,19 +50,22 @@ public class ShmupPlayer : ShmupEntity {
 
         //Rotation
         Vector2 aimDir = Controls.getAimDirection();
-
+        float pendingRotation = 0.0f;
         if(aimDir.magnitude >= 0.8)
         {
-            currentRotation = Mathf.Atan(aimDir.x / aimDir.y) * Mathf.Rad2Deg;
+            pendingRotation = Mathf.Atan(aimDir.x / aimDir.y) * Mathf.Rad2Deg;
             if (aimDir.y < 0)
-                currentRotation += 180;
+                pendingRotation += 180;
         }
         else
         {
-            currentRotation = Mathf.Atan(moveDir.x / moveDir.y) * Mathf.Rad2Deg;
+            pendingRotation = Mathf.Atan(moveDir.x / moveDir.y) * Mathf.Rad2Deg;
             if (moveDir.y < 0)
-                currentRotation += 180;
+                pendingRotation += 180;
         }
+
+        if (!float.IsNaN(pendingRotation))
+            currentRotation = pendingRotation;
 
         currentRotation = currentRotation % 360;
         this.transform.eulerAngles = Vector3.up * currentRotation;
