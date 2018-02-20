@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardBullet : Bullet
+public class BulletStandard : Bullet
 {
-    public int durability;
+    public float durability;
     public int damage;
     public float duration;
 
     Rigidbody selfBody;
-    
+
+    public bool isPiercing;
+
     private void Awake()
     {
         this.selfBody = this.GetComponent<Rigidbody>();
@@ -22,9 +24,18 @@ public class StandardBullet : Bullet
             Destroy(this.gameObject);
     }
 
-
     public override void Fire(float xDir, float yDir, float speed)
     {
         this.selfBody.velocity = (Vector3.right * xDir + Vector3.forward * yDir) * speed;
+    }
+
+    public override void OnHit(float damage)
+    {
+        if(!isPiercing)
+        {
+            this.durability -= damage;
+            if (this.durability <= 0)
+                Destroy(this.gameObject);
+        }
     }
 }

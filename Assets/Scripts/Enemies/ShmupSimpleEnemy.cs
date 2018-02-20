@@ -51,7 +51,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     void ShootBullet()
     {
         Bullet bullet = Instantiate(bulletPrefab).GetComponent<Bullet>();
-        bullet.hitbox.owner = this.gameObject;
+        bullet.hitbox.isPlayerOwned = false;
+        bullet.hurtbox.isPlayerOwned = false;
         bullet.gameObject.transform.position = this.gameObject.transform.position;
 
         float xDir = Mathf.Sin(Mathf.Deg2Rad * currentRotation);

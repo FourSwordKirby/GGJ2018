@@ -16,9 +16,6 @@ public class WirelessPortHurtbox : Hurtbox3D
             
             entity.OnHit(hitbox.damage, hitbox.owner);
 
-            if (!hitbox.persistent)
-                Destroy(hitbox.gameObject);
-
             //Visual hit effect stuff?
             //Vector3 hitLocation = (this.transform.position + col.bounds.ClosestPoint(this.transform.position)) / 2.0f;
         }

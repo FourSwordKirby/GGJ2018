@@ -39,7 +39,8 @@ GameObject:
   - component: {fileID: 114391449587368144}
   - component: {fileID: 54350903966323298}
   - component: {fileID: 135896006240654098}
-  - component: {fileID: 114225012677706710}
+  - component: {fileID: 114768445935669516}
+  - component: {fileID: 114065666069752870}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -130,7 +131,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114225012677706710
+--- !u!114 &114065666069752870
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -138,13 +139,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623639433359514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36eb6455bc21dc64aa16dc2c8ef2eab8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5560bc5ef1a58db4191a4f2a7f8506ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxName: BulletHitbox
-  owner: {fileID: 1623639433359514}
-  damage: 1
-  persistent: 0
+  boxName: BulletHurtbox
+  owner: {fileID: 0}
+  isPlayerOwned: 0
 --- !u!114 &114391449587368144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,10 +156,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4145be412e076204b9b1ce1d912f852a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 114225012677706710}
+  hitbox: {fileID: 114768445935669516}
+  hurtbox: {fileID: 114768445935669516}
   durability: 1
   damage: 1
   duration: 10
+  isPiercing: 0
+--- !u!114 &114768445935669516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623639433359514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd7bcfd1ffba2048af37affa3c41d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxName: BulletHitbox
+  owner: {fileID: 0}
+  damage: 1
+  isPlayerOwned: 0
+  persistent: 0
 --- !u!135 &135896006240654098
 SphereCollider:
   m_ObjectHideFlags: 1
