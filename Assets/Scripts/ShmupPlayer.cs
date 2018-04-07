@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShmupPlayer : ShmupEntity {
 
     public float speed;
+    public float targetRotation;
     public float currentRotation;
 
     public int maxHealth;
@@ -16,10 +17,13 @@ public class ShmupPlayer : ShmupEntity {
     private float cooldown;
     private float bombCooldown;
 
+    //Constants?
     private float bombCooldownDuration = 2;
+    private float turnSpeed = 30f;
 
 
     //External GameObjects
+    public GameObject firingOrigin;
     public GameObject bulletPrefab;
     public GameObject bombPrefab;
 
@@ -51,28 +55,30 @@ public class ShmupPlayer : ShmupEntity {
         //Rotation
         Vector2 aimDir = Controls.getAimDirection();
         float pendingRotation = 0.0f;
-        if(aimDir.magnitude >= 0.8)
+        if(aimDir.magnitude >= 0.4)
         {
             pendingRotation = Mathf.Atan(aimDir.x / aimDir.y) * Mathf.Rad2Deg;
             if (aimDir.y < 0)
                 pendingRotation += 180;
+            if (!float.IsNaN(pendingRotation))
+                targetRotation = pendingRotation;
         }
-        else
+
+        currentRotation = this.transform.eulerAngles.y;
+        targetRotation = (targetRotation % 360 + 360) % 360;
+        if(Mathf.Abs(targetRotation - currentRotation) > 180)
         {
-            pendingRotation = Mathf.Atan(moveDir.x / moveDir.y) * Mathf.Rad2Deg;
-            if (moveDir.y < 0)
-                pendingRotation += 180;
+            float absoluteRotation = (currentRotation % 360 + 360) % 360;
+            if (absoluteRotation > 180)
+                currentRotation = absoluteRotation - 360.0f;
+            else
+                targetRotation = targetRotation - 360.0f;
         }
-
-        if (!float.IsNaN(pendingRotation))
-            currentRotation = pendingRotation;
-
-        currentRotation = currentRotation % 360;
-        this.transform.eulerAngles = Vector3.up * currentRotation;
+        this.transform.eulerAngles = Vector3.up * Mathf.MoveTowards(currentRotation, targetRotation, turnSpeed);
 
         //Shooting
         cooldown -= Time.deltaTime;
-        if (Controls.shootInputHeld() && cooldown <= 0.0f)
+        if (Controls.shootInputHeld() && cooldown <= 0.0f && this.transform.eulerAngles.y == targetRotation)
         {
             cooldown = 1 / rateOfFire;
             ShootBullet();
@@ -99,10 +105,11 @@ public class ShmupPlayer : ShmupEntity {
         bullet.hitbox.isPlayerOwned = true;
         bullet.hurtbox.isPlayerOwned = true;
 
-        bullet.gameObject.transform.position = this.gameObject.transform.position;
+        float xDir = Mathf.Sin(Mathf.Deg2Rad * targetRotation);
+        float yDir = Mathf.Cos(Mathf.Deg2Rad * targetRotation);
 
-        float xDir = Mathf.Sin(Mathf.Deg2Rad * currentRotation);
-        float yDir = Mathf.Cos(Mathf.Deg2Rad * currentRotation);
+        bullet.gameObject.transform.position = firingOrigin.transform.position;
+
         bullet.Fire(xDir, yDir, bulletSpeed);
     }
 

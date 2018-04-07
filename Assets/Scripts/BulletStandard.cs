@@ -27,6 +27,7 @@ public class BulletStandard : Bullet
     public override void Fire(float xDir, float yDir, float speed)
     {
         this.selfBody.velocity = (Vector3.right * xDir + Vector3.forward * yDir) * speed;
+        this.gameObject.transform.eulerAngles = Vector2.up * Mathf.Atan(xDir / yDir) * Mathf.Rad2Deg;
     }
 
     public override void OnHit(float damage)

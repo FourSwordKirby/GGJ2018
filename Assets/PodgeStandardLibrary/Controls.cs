@@ -34,6 +34,7 @@ public class Controls {
             yAxis = Input.GetAxis("Keyboard Vertical");
 
         return new Vector2(xAxis, yAxis);
+
     }
 
     public static Parameters.InputDirection getInputDirection()

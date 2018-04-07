@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1491206117672680}
   m_IsPrefabParent: 1
+--- !u!1 &1137293237620690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4881672368250132}
+  m_Layer: 0
+  m_Name: FiringOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1365262393343162
 GameObject:
   m_ObjectHideFlags: 1
@@ -228,7 +243,7 @@ Transform:
   - {fileID: 4956197271270010}
   - {fileID: 4901516754128846}
   m_Father: {fileID: 4489996511444174}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4321186681566494
 Transform:
@@ -266,6 +281,7 @@ Transform:
   m_LocalPosition: {x: -3.0999994, y: 0.26, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4881672368250132}
   - {fileID: 4655975986401166}
   - {fileID: 4295699119527052}
   m_Father: {fileID: 0}
@@ -283,8 +299,21 @@ Transform:
   m_Children:
   - {fileID: 4247368777110214}
   m_Father: {fileID: 4489996511444174}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4881672368250132
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137293237620690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4489996511444174}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4901516754128846
 Transform:
   m_ObjectHideFlags: 1
@@ -475,13 +504,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  targetRotation: 0
   currentRotation: 180
   maxHealth: 3
   health: 3
   bombs: 0
-  bulletSpeed: 16
+  bulletSpeed: 20
   rateOfFire: 8
-  bulletPrefab: {fileID: 1623639433359514, guid: e3fb4830960c38c4ba4b4fd0624498fa,
+  firingOrigin: {fileID: 1137293237620690}
+  bulletPrefab: {fileID: 1623639433359514, guid: 3747aa32dcfce584a9e8e9207215bc3c,
     type: 2}
   bombPrefab: {fileID: 1623639433359514, guid: ca7a4457dd1bcbf46ac82e15306a6dac, type: 2}
   inGrazeForm: 0
