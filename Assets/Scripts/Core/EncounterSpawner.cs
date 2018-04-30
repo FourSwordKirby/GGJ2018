@@ -30,8 +30,10 @@ public class EncounterSpawner : MonoBehaviour {
         if (started && encounters[waveNumber].completed)
         {
             waveNumber++;
-            if(waveNumber < encounters.Count)
+            if (waveNumber < encounters.Count)
                 encounters[waveNumber].StartEncounter();
+            else
+                started = false;
         }
     }
 }

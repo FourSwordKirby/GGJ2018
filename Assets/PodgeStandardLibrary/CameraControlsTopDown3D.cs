@@ -14,7 +14,7 @@ public class CameraControlsTopDown3D : MonoBehaviour {
     };
 	private float shakeIntensity = 0.0f;
 	private float shakeDuration = 0.0f;
-	private ShakePresets shakeDirection = ShakePresets.NONE;
+	private ShakePresets shakeDirection = ShakePresets.BOTH;
     private Action shakeComplete = null;
 	private Vector2 shakeOffset = new Vector2();
 
@@ -187,12 +187,13 @@ public class CameraControlsTopDown3D : MonoBehaviour {
         this.visibleTargets.Add(target.gameObject);
     }
 
-    public void Shake(float Intensity = 0.05f, 
+    public void Shake(float Intensity = 0.1f, 
                         float Duration = 0.5f, 
                         Action OnComplete = null, 
                         bool Force = true, 
-                        ShakePresets Direction = ShakePresets.NONE)
+                        ShakePresets Direction = ShakePresets.BOTH)
     {
+        print("shaking");
         if(!Force && ((shakeOffset.x != 0) || (shakeOffset.y != 0)))
 			return;
 		shakeIntensity = Intensity;

@@ -13,8 +13,6 @@ public class ShmupHurtbox3D : Hurtbox3D
         ShmupHitbox3D hitbox = col.GetComponent<ShmupHitbox3D>();
         if(hitbox != null && this.isPlayerOwned != hitbox.isPlayerOwned)
         {
-            print(this.isPlayerOwned);
-            print(hitbox.isPlayerOwned);
             ShmupEntity entity = owner.GetComponent<ShmupEntity>();
             entity.OnHit(hitbox.damage);
 

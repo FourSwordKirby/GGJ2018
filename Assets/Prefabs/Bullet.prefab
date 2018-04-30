@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4672418142776270}
   - component: {fileID: 33374814055028424}
   - component: {fileID: 23399239593820014}
+  - component: {fileID: 122246669076534676}
   m_Layer: 0
   m_Name: BulletModel
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 1075657983212592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.24668235, y: 0.24668227, z: 0.24668227}
   m_Children: []
   m_Father: {fileID: 4921066943617360}
   m_RootOrder: 0
@@ -68,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623639433359514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.39, z: 1.15}
-  m_LocalScale: {x: 0.78801936, y: 0.78801936, z: 0.78801936}
+  m_LocalPosition: {x: -0.045204163, y: -1e-15, z: 26.974253}
+  m_LocalScale: {x: 3.6282592, y: 3.6282594, z: 3.6282594}
   m_Children:
   - {fileID: 4672418142776270}
   m_Father: {fileID: 0}
@@ -178,6 +179,17 @@ MonoBehaviour:
   damage: 1
   isPlayerOwned: 0
   persistent: 0
+--- !u!122 &122246669076534676
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1075657983212592}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 1.39
 --- !u!135 &135896006240654098
 SphereCollider:
   m_ObjectHideFlags: 1
