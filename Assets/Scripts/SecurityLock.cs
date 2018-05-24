@@ -46,4 +46,9 @@ public class SecurityLock : ShmupEntity
             activated = !activated;
         }
     }
+
+    public override void OnStun()
+    {
+        throw new System.NotImplementedException();
+    }
 }

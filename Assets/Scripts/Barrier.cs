@@ -40,4 +40,9 @@ public class Barrier : ShmupEntity
             }
         }
     }
+
+    public override void OnStun()
+    {
+        throw new System.NotImplementedException();
+    }
 }

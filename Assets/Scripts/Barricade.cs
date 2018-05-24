@@ -27,4 +27,9 @@ public class Barricade : ShmupEntity {
             destroyed = true;
         }
     }
+
+    public override void OnStun()
+    {
+        throw new System.NotImplementedException();
+    }
 }

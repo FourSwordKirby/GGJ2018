@@ -154,10 +154,19 @@ public class ShmupSimpleEnemy : ShmupEnemy {
             anim.SetTrigger("Hit");
     }
 
+    public override void OnStun()
+    {
+        anim.SetTrigger("Stun");
+        this.rateOfFire = 0;
+        CameraControlsTopDown3D.instance.Shake(0.1f, 0.1f);
+    }
+
     public override void Die()
     {
         anim.SetTrigger("Die");
-        CameraControlsTopDown3D.instance.Shake();
+        CameraControlsTopDown3D.instance.Shake(0.1f, 0.25f);
+        print("Implement this properly (as in actually destroy the enemy object via animator or something");
+        this.rateOfFire = 0;
     }
 
     public override void Spawn()

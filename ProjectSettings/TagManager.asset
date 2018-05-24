@@ -15,9 +15,9 @@ TagManager:
   - 
   - Player
   - Interaction
-  - 
-  - 
-  - 
+  - BulletNegation
+  - Bomb
+  - Enemy
   - 
   - 
   - 

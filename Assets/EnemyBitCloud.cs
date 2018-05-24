@@ -38,7 +38,6 @@ public class EnemyBitCloud : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        print(col);
         foreach(FloatingBit myBit in bits)
         {
             myBit.TrackObject(col.gameObject);

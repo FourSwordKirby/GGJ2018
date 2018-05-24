@@ -25,7 +25,7 @@ public class ShmupPlayer : ShmupEntity {
     //External GameObjects
     public GameObject firingOrigin;
     public GameObject bulletPrefab;
-    public GameObject bombPrefab;
+    public BombSpawner bombSpawner;
 
     public bool inGrazeForm;
 
@@ -117,14 +117,17 @@ public class ShmupPlayer : ShmupEntity {
 
     void UseBomb()
     {
-        Bomb bomb = Instantiate(bombPrefab).GetComponent<Bomb>();
-        bomb.hitbox.owner = this.gameObject;
-        bomb.gameObject.transform.position = this.gameObject.transform.position;
+        bombSpawner.Spawn(this.transform.position);
     }
 
     public override void OnHit(float damage)
     {
         this.health -= 1;
+    }
+
+    public override void OnStun()
+    {
+        throw new System.NotImplementedException();
     }
 
     public void GainBomb()
@@ -156,7 +159,7 @@ public class ShmupPlayer : ShmupEntity {
     }
 
 
-    private int startingBombs = 3;
+    private int startingBombs = 30;
     public void Spawn(SpawnPoint spawn)
     {
         this.health = maxHealth;

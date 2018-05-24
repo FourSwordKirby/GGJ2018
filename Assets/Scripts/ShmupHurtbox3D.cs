@@ -20,7 +20,13 @@ public class ShmupHurtbox3D : Hurtbox3D
                 Destroy(hitbox.gameObject);
 
             //Visual hit effect stuff?
-            //Vector3 hitLocation = (this.transform.position + col.bounds.ClosestPoint(this.transform.position)) / 2.0f;
+        }
+
+        BombHitbox3D bombHitbox = col.GetComponent<BombHitbox3D>();
+        if (bombHitbox != null && this.isPlayerOwned != bombHitbox.isPlayerOwned)
+        {
+            ShmupEntity entity = owner.GetComponent<ShmupEntity>();
+            entity.OnStun();
         }
     }
 }

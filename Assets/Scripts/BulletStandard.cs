@@ -39,4 +39,9 @@ public class BulletStandard : Bullet
                 Destroy(this.gameObject);
         }
     }
+
+    public override void OnStun()
+    {
+        Destroy(this.gameObject);
+    }
 }
