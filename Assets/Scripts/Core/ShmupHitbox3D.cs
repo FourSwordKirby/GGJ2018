@@ -9,4 +9,13 @@ public class ShmupHitbox3D : Hitbox3D
 {
     public bool isPlayerOwned;
     public bool persistent;
+
+    public delegate void DestroyEffect();
+    public DestroyEffect destroyEffect;
+
+    public void DestroyHitbox()
+    {
+        if (destroyEffect != null)
+            destroyEffect();           
+    }
 }

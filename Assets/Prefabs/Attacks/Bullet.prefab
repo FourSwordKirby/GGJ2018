@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33374814055028424}
   - component: {fileID: 23399239593820014}
   - component: {fileID: 122246669076534676}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BulletModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 135896006240654098}
   - component: {fileID: 114768445935669516}
   - component: {fileID: 114065666069752870}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623639433359514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.045204163, y: -1e-15, z: 26.974253}
+  m_LocalPosition: {x: -9.58, y: 2.07, z: 23.11}
   m_LocalScale: {x: 3.6282592, y: 3.6282594, z: 3.6282594}
   m_Children:
   - {fileID: 4672418142776270}
@@ -162,6 +162,7 @@ MonoBehaviour:
   durability: 1
   damage: 1
   duration: 10
+  model: {fileID: 1075657983212592}
   isPiercing: 0
 --- !u!114 &114768445935669516
 MonoBehaviour:

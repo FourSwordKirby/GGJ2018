@@ -21,8 +21,10 @@ GameObject:
   - component: {fileID: 4672418142776270}
   - component: {fileID: 33374814055028424}
   - component: {fileID: 23399239593820014}
+  - component: {fileID: 135525949796705288}
+  - component: {fileID: 114475570221594870}
   m_Layer: 0
-  m_Name: BulletModel
+  m_Name: BombModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,13 +38,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4921066943617360}
-  - component: {fileID: 114391449587368144}
-  - component: {fileID: 54350903966323298}
-  - component: {fileID: 135896006240654098}
-  - component: {fileID: 114768445935669516}
-  - component: {fileID: 114065666069752870}
+  - component: {fileID: 114399518462535066}
   m_Layer: 0
-  m_Name: PlayerBullet
+  m_Name: PlayerBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,13 +52,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075657983212592}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4921066943617360}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921066943617360
 Transform:
   m_ObjectHideFlags: 1
@@ -68,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623639433359514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.39, z: 14.53}
+  m_LocalPosition: {x: 0, y: 0.39, z: 1.15}
   m_LocalScale: {x: 0.78801936, y: 0.78801936, z: 0.78801936}
   m_Children:
   - {fileID: 4672418142776270}
@@ -89,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3f97cded616f73b4fbd79bb58694eaf0, type: 2}
+  - {fileID: 2100000, guid: 4a9c79054cfcc394ba708114360cb247, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,23 +113,8 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075657983212592}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54350903966323298
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623639433359514}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &114065666069752870
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114399518462535066
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,51 +122,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623639433359514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5560bc5ef1a58db4191a4f2a7f8506ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 08047ae6d0d10b7468c4f05cab920720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxName: BulletHurtbox
-  owner: {fileID: 1623639433359514}
-  isPlayerOwned: 1
---- !u!114 &114391449587368144
+  hitbox: {fileID: 114475570221594870}
+  blastBase: {fileID: 1075657983212592}
+  fuse: 0
+  explosionRate: 100
+  duration: 1
+  radius: 50
+  detonated: 0
+--- !u!114 &114475570221594870
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623639433359514}
+  m_GameObject: {fileID: 1075657983212592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4145be412e076204b9b1ce1d912f852a, type: 3}
+  m_Script: {fileID: 11500000, guid: 36eb6455bc21dc64aa16dc2c8ef2eab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitbox: {fileID: 114768445935669516}
-  hurtbox: {fileID: 114768445935669516}
-  durability: 1
-  damage: 1
-  duration: 10
-  isPiercing: 0
---- !u!114 &114768445935669516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623639433359514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd7bcfd1ffba2048af37affa3c41d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxName: BulletHitbox
+  boxName: BombHitbox
   owner: {fileID: 1623639433359514}
   damage: 1
-  isPlayerOwned: 1
-  persistent: 0
---- !u!135 &135896006240654098
+--- !u!135 &135525949796705288
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623639433359514}
+  m_GameObject: {fileID: 1075657983212592}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

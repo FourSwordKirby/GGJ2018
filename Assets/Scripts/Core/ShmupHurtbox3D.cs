@@ -17,9 +17,10 @@ public class ShmupHurtbox3D : Hurtbox3D
             entity.OnHit(hitbox.damage);
 
             if (!hitbox.persistent)
-                Destroy(hitbox.gameObject);
-
-            //Visual hit effect stuff?
+            {
+                //Call special animations for the hitbox's object if applicable
+                hitbox.DestroyHitbox();
+            }
         }
 
         BombHitbox3D bombHitbox = col.GetComponent<BombHitbox3D>();
@@ -28,5 +29,11 @@ public class ShmupHurtbox3D : Hurtbox3D
             ShmupEntity entity = owner.GetComponent<ShmupEntity>();
             entity.OnStun();
         }
+
+        //Visual hit effect stuff?
+        EntityType type1 = EffectManager.instance.LayerToEntityType(this.gameObject.layer);
+        EntityType type2 = EffectManager.instance.LayerToEntityType(col.gameObject.layer);
+
+        EffectManager.instance.SpawnCollisionEffect(type1, type2, this.transform.position);
     }
 }

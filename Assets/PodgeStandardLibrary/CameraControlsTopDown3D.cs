@@ -39,7 +39,7 @@ public class CameraControlsTopDown3D : MonoBehaviour {
 
     /* camera moving constants */
     public float Y_OFFSET = 40.0f;
-    private const float Z_OFFSET = -7.5f;
+    public float Z_OFFSET = -7.5f;
 
     private const float TARGETING_LOWER_BOUND = 0.0f;
     private const float TARGETING_UPPER_BOUND = 1.0f;

@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4358130899972880}
   - component: {fileID: 135533759121025546}
   - component: {fileID: 114351438693241688}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,8 +148,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053485940245472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.2, y: 0.5, z: 69.7}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: 15.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4842845030863262}
@@ -354,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxName: Hurtbox
   owner: {fileID: 1053485940245472}
+  isPlayerOwned: 0
 --- !u!114 &114645154824834726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,8 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf23b8e1dd83c6140b1b113db3a734de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hackingThreshold: 20
-  decayRate: 0.4
+  hackingThreshold: 20000
+  decayRate: 19000
   activated: 1
   selfRenderer: {fileID: 23545840425899694}
   spotLight: {fileID: 108649637384899484}

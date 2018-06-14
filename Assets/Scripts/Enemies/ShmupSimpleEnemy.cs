@@ -24,6 +24,7 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     public float currentRotation;
 
     public float health;
+    public float maxHealth;
 
     public float speed;
     public float turnSpeed;
@@ -173,6 +174,16 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     {
         this.transform.position = spawnLocation;
         this.gameObject.SetActive(true);
+    }
+
+    public override float GetHealth()
+    {
+        return health;
+    }
+
+    public override float GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     private void PingEffect()

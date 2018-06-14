@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxName: Hurtbox
   owner: {fileID: 1726692864141908}
+  isPlayerOwned: 0
 --- !u!114 &114725362233489182
 MonoBehaviour:
   m_ObjectHideFlags: 1

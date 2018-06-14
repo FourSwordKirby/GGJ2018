@@ -14,13 +14,13 @@ TagManager:
   - 
   - 
   - Player
-  - Interaction
-  - BulletNegation
-  - Bomb
+  - PlayerBullet
+  - PlayerBomb
   - Enemy
-  - 
-  - 
-  - 
+  - EnemyBullet
+  - EnemyBomb
+  - Interaction
+  - EventTrigger
   - 
   - 
   - 

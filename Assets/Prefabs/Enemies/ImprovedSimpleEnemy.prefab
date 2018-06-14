@@ -119,13 +119,13 @@ GameObject:
   - component: {fileID: 54840706660748974}
   - component: {fileID: 114044026845856736}
   - component: {fileID: 95824041784706810}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: ImprovedSimpleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1385489763400274
 GameObject:
   m_ObjectHideFlags: 1
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4405328506230090}
   - component: {fileID: 135627174883553138}
   - component: {fileID: 114160045343473682}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284059799176034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.08, y: 0, z: 17.11}
+  m_LocalPosition: {x: 4.1380157, y: 0, z: -3.9464397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4900579699761534}
@@ -751,7 +751,7 @@ MonoBehaviour:
   movementMode: 3
   firingMode: 0
   target: {fileID: 0}
-  rateOfFire: 0
+  rateOfFire: 1
   isEngaged: 1
   bulletPrefab: {fileID: 1623639433359514, guid: e3fb4830960c38c4ba4b4fd0624498fa,
     type: 2}

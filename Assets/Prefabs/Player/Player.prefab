@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 4027034759895916}
   - component: {fileID: 135922259883199300}
   - component: {fileID: 114360438969869918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5709,7 +5709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2b9e687a2e55846bedd1e66cf8b567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layers: 3
+  layers: 4
   segments: 9
   borderPercentage: 0.25
   innerRadius: 1
