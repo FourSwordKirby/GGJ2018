@@ -64,7 +64,7 @@ public class BombSpawner : MonoBehaviour {
             {
                 combine[i].mesh = meshFilters[i].sharedMesh;
                 combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-                meshFilters[i].gameObject.active = false;
+                meshFilters[i].gameObject.SetActive(false);
 
                 Destroy(meshFilters[i].gameObject);
 
@@ -80,7 +80,7 @@ public class BombSpawner : MonoBehaviour {
             MeshRenderer glowMR = glow.AddComponent<MeshRenderer>();
             glowMR.material = glowMaterial;
             RotatingLight light = glow.AddComponent<RotatingLight>();
-            light.renderer = glowMR;
+            light.selfRenderer = glowMR;
 
 
             meshFilters = GetComponentsInChildren<MeshFilter>().Where(x => x.gameObject.name.Contains("Arc")).ToList();
@@ -89,7 +89,7 @@ public class BombSpawner : MonoBehaviour {
             {
                 combine[i].mesh = meshFilters[i].sharedMesh;
                 combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-                meshFilters[i].gameObject.active = false;
+                meshFilters[i].gameObject.SetActive(false);
 
                 Destroy(meshFilters[i].gameObject);
 

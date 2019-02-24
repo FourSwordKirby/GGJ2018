@@ -8,7 +8,7 @@ public class SecurityLock : ShmupEntity
 
     private int hackingProgress;
     public float decayRate; //We lose 1 hacking progress point every x seconds
-    public bool activated;
+    public bool unlocked;
 
     public Renderer selfRenderer;
     public Material onMaterial;
@@ -30,7 +30,7 @@ public class SecurityLock : ShmupEntity
         }
 
         //Visual activated indicator
-        if (activated)
+        if (unlocked)
             selfRenderer.material = onMaterial;
         else
             selfRenderer.material = offMaterial;
@@ -43,12 +43,27 @@ public class SecurityLock : ShmupEntity
         if (hackingProgress > hackingThreshold)
         {
             hackingProgress = 0;
-            activated = !activated;
+            unlocked = !unlocked;
         }
     }
 
     public override void OnStun()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override bool IsCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Suspend()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Unsuspend()
+    {
+        //throw new System.NotImplementedException();
     }
 }

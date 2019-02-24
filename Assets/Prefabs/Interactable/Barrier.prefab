@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33145363857347432}
   - component: {fileID: 65218809971303004}
   - component: {fileID: 23678315981036016}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4640136102840668}
   - component: {fileID: 114717932152377374}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4672729281002204}
   - component: {fileID: 114283928740147842}
   - component: {fileID: 65477337803131552}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4798069768362408}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223837301737634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.28, y: 0, z: -85.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.14, y: 0.7, z: -1.49}
+  m_LocalScale: {x: 1.0913923, y: 0.3602079, z: 0.3602079}
   m_Children:
   - {fileID: 4798069768362408}
   m_Father: {fileID: 0}
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locks:
-  - {fileID: 0}
   - {fileID: 0}
   model: {fileID: 1700731236036760}
   signalBeam: {fileID: 54491081942659888, guid: 0a4f972f598312e41b33eb4fd91cbce3,

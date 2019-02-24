@@ -26,11 +26,14 @@ public class EnemyInfoUI : MonoBehaviour {
 
     void Update()
     {
-        //targetHealth = currentEnemy.GetHealth();
-        //maxHealth = currentEnemy.GetMaxHealth();
-        
+        if(currentEnemy != null)
+        {
+            targetHealth = currentEnemy.GetHealth();
+            maxHealth = currentEnemy.GetMaxHealth();
+        }
 
-        if(lastHealthValue != targetHealth)
+
+        if (lastHealthValue != targetHealth)
         {
             lastHealthValue = targetHealth;
             reductionTimer = 1.0f;

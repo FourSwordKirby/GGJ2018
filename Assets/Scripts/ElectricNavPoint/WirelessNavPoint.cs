@@ -44,18 +44,16 @@ public class WirelessNavPoint : MonoBehaviour {
             // This ensures each line is only drawn once.
             if (this.id < navpoint.id)
             {
-                if (navpoint.adjacentPoints.Contains(this))
-                {
-                    GameObject obj = new GameObject("Line Renderer");
-                    obj.transform.parent = this.transform;
-                    LineRenderer lr = obj.AddComponent<LineRenderer>();
-                    lr.SetVertexCount(2);
-                    lr.SetPosition(0, this.transform.position);
-                    lr.SetPosition(1, navpoint.transform.position);
-                    //lr.SetColors(connectionColor, connectionColor);
-                    lr.material = connectionMaterial;
-                    lr.SetWidth(0.2f, 0.2f);
-                }
+                GameObject obj = new GameObject("Line Renderer");
+                obj.transform.parent = this.transform;
+                LineRenderer lr = obj.AddComponent<LineRenderer>();
+                lr.positionCount = 2;
+                lr.SetPosition(0, this.transform.position);
+                lr.SetPosition(1, navpoint.transform.position);
+                //lr.SetColors(connectionColor, connectionColor);
+                lr.material = connectionMaterial;
+                lr.startWidth = 0.2f;
+                lr.endWidth = 0.2f;
             }
         }
 
@@ -64,16 +62,21 @@ public class WirelessNavPoint : MonoBehaviour {
             GameObject obj = new GameObject("Line Renderer");
             obj.transform.parent = this.transform;
             LineRenderer lr = obj.AddComponent<LineRenderer>();
-            lr.SetVertexCount(2);
+            lr.positionCount = 2;
             lr.SetPosition(0, this.transform.position);
             lr.SetPosition(1, device.transform.position);
             lr.material = deviceConnectionMaterial;
-            lr.SetWidth(0.2f, 0.2f);
+            lr.startWidth = 0.2f;
+            lr.endWidth = 0.2f;
         }
     }
 
     public WirelessNavPoint getNextNavPoint(Vector3 direction, WirelessNavPoint previousNode = null)
     {
+
+        if (adjacentPoints.Count == 0)
+            return null;
+
         if (direction != Vector3.zero)
         {
             WirelessNavPoint nextNavPoint = adjacentPoints.Aggregate(
@@ -86,9 +89,7 @@ public class WirelessNavPoint : MonoBehaviour {
              return nextNavPoint;
         }
         else
-        {
             return adjacentPoints[0];
-        }
     }
 
     //This will disable the associated electric device and do other things as necessary when the player enters it

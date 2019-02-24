@@ -8,6 +8,7 @@ using System.Collections;
 public class ShmupHurtbox3D : Hurtbox3D
 {
     public bool isPlayerOwned;
+    public bool isProjectile;
     void OnTriggerEnter(Collider col)
     {
         ShmupHitbox3D hitbox = col.GetComponent<ShmupHitbox3D>();
@@ -35,5 +36,7 @@ public class ShmupHurtbox3D : Hurtbox3D
         EntityType type2 = EffectManager.instance.LayerToEntityType(col.gameObject.layer);
 
         EffectManager.instance.SpawnCollisionEffect(type1, type2, this.transform.position);
+        if (isProjectile)
+            Destroy(this.gameObject);
     }
 }

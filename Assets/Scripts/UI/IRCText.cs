@@ -67,7 +67,7 @@ public class IRCText : MonoBehaviour {
             Canvas.ForceUpdateCanvases();
             int currentLineCount = chatbox.cachedTextGenerator.lineCount;
 
-            while (currentLineCount > lineLimit)
+            if (currentLineCount > lineLimit)
             {
                 int j = 0;
                 int startIndex = chatbox.cachedTextGenerator.lines[j].startCharIdx;

@@ -1,0 +1,9 @@
+Partner: Good job!
+
+Partner: Next we'll be moving on to the basics of combat
+
+[Pan Focus] Partner: The object you see there is called the <bold>master node<bold>
+
+Partner: Destroying it will clear all other objects associated with it
+
+[Pan Player] Partner: Give it a try.

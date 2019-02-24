@@ -13,7 +13,7 @@ public class Barrier : ShmupEntity
     // Update is called once per frame
     void Update()
     {
-        model.SetActive(!locks.All(x => x.activated == false));
+        model.SetActive(!locks.All(x => x.unlocked));
         if (cooldownTimer > 0)
             cooldownTimer -= Time.deltaTime;
     }
@@ -41,8 +41,33 @@ public class Barrier : ShmupEntity
         }
     }
 
+    public bool isClosed()
+    {
+        return model.activeSelf;
+    }
+
     public override void OnStun()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Spawn()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool IsCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Suspend()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Unsuspend()
+    {
+        //throw new System.NotImplementedException();
     }
 }

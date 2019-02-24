@@ -84,7 +84,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: isEngaged
+    attribute: m_Enabled
     path: 
     classID: 114
     script: {fileID: 11500000, guid: 2c53ed88057b62446958b876a6d4c198, type: 3}
@@ -112,10 +112,10 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 2812173803
+      attribute: 3305885265
       script: {fileID: 11500000, guid: 2c53ed88057b62446958b876a6d4c198, type: 3}
       typeID: 114
-      customType: 0
+      customType: 24
       isPPtrCurve: 0
     pptrCurveMapping: []
   m_AnimationClipSettings:
@@ -301,7 +301,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: isEngaged
+    attribute: m_Enabled
     path: 
     classID: 114
     script: {fileID: 11500000, guid: 2c53ed88057b62446958b876a6d4c198, type: 3}

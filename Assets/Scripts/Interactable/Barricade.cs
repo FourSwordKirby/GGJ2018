@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barricade : ShmupEntity {
+public class Barricade : ShmupEntity, ShmupSpawnable {
 
     public int hackingThreshold;
     public int hackingProgress;
-    public bool destroyed;
-
 
     public GameObject model;
-    
-    // Update is called once per frame
-    void Update()
-    {
-        model.SetActive(!destroyed);
-    }
+    public GameObject selfCollider;
+
+    private bool destroyed;
 
     public override void OnHit(float damage)
     {
@@ -24,12 +19,46 @@ public class Barricade : ShmupEntity {
         if (hackingProgress >= hackingThreshold)
         {
             hackingProgress = 0;
-            destroyed = true;
+            Die();
         }
     }
 
     public override void OnStun()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Spawn()
+    {
+        model.SetActive(true);
+        selfCollider.SetActive(true);
+        destroyed = false;
+    }
+
+    public void Die()
+    {
+        destroyed = true;
+        model.SetActive(false);
+        selfCollider.SetActive(false);
+    }
+
+    public override bool IsCompleted()
+    {
+        return destroyed;
+    }
+
+    public override void Suspend()
+    {
+        return;
+    }
+
+    public override void Unsuspend()
+    {
+        return;
+    }
+
+    public bool IsDead()
+    {
+        return destroyed;
     }
 }

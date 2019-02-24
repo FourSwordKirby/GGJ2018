@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class ShmupGameManager : MonoBehaviour {
 
     public List<SpawnPoint> spawnPoints;
     public ShmupPlayer player;
     public GameObject warpAnim;
+
+    public List<ShmupLevel> levels;
+    public int currentLevelIndex;
 
     //Instance Managing;
     public static ShmupGameManager instance;
@@ -16,7 +19,7 @@ public class ShmupGameManager : MonoBehaviour {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -27,80 +30,29 @@ public class ShmupGameManager : MonoBehaviour {
         }
     }
 
+
+    public GameObject dialogComponent;
     // Use this for initialization
     void Start () {
-        spawnPoints = FindObjectsOfType<SpawnPoint>().ToList();
+        spawnPoints = levels[0].GetSpawnPoints();
         player = FindObjectOfType<ShmupPlayer>();
-        StartGame();
+        player.gameObject.SetActive(false);
+
+        dialogComponent.SetActive(true);
+
+        StartLevel();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    public void StartGame()
+    //This will be the thing that starts off the whole game from whatever the current save point is
+    public void StartLevel()
     {
-        RespawnPlayer();
-
-        //TextAsset dialog = ProgressManager.instance.GetStartDialog();
-        //DialogEngine.instance.startConversation(dialog);
-    }
-
-    public IEnumerator PlayCutscene(TextAsset dialog, bool withPortraits)
-    {
-        ConversationPause();
-        while (Letterbox.instance.isOn)
-            yield return null;
-        DialogEngine.instance.StartDialog(dialog, withPortraits);
-
-        while(DialogEngine.instance.currentlyActive)
-            yield return null;
-
-        ConversationUnpause();
-        yield return null;
-    }
-
-    public IEnumerator StartConversation(TextAsset dialog, bool withPortraits)
-    {
-        DialogEngine.instance.StartDialog(dialog, withPortraits);
-        yield return null;
-    }
-
-    private void ConversationPause()
-    {
-        PauseGameplay();
-        StartCoroutine(Letterbox.instance.TurnOn(2.0f));
-    }
-    private void ConversationUnpause()
-    {
-        StartCoroutine(Letterbox.instance.TurnOff(2.0f));
-        ResumeGameplay();
-    }
-
-    private void MenuPause()
-    {
-        PauseGameplay();
-        StartCoroutine(Letterbox.instance.TurnOn(2.0f));
-        //Display a pause menu or something
-    }
-
-    private void PauseGameplay()
-    {
-        Time.timeScale = 0.0f;
-        Controls.DisableGameplayControls();
-    }
-
-    private void ResumeGameplay()
-    {
-        Time.timeScale = 1.0f;
-        Controls.EnableGameplayControls();
+        levels[currentLevelIndex].StartLevel();
     }
 
 
     public void RespawnPlayer()
     {
-        SpawnPoint closestSpawn = spawnPoints[0];
+        SpawnPoint closestSpawn = spawnPoints.First(x => x.activated);
         float closestDistance = Vector3.Distance(player.transform.position, closestSpawn.transform.position);
         foreach (SpawnPoint spawn in spawnPoints)
         {
@@ -118,5 +70,68 @@ public class ShmupGameManager : MonoBehaviour {
         player.Spawn(closestSpawn);
         GameObject anim = Instantiate(warpAnim);
         anim.transform.position = player.transform.position;
+    }
+
+
+
+
+    public IEnumerator PlayCutscene(TextAsset dialog, bool withPortraits)
+    {
+        CutscenePause();
+        
+        List<string> dialogEntries = DialogEngine.CreateDialogComponents(dialog.text);
+        CutsceneDialogController.instance.StartCutscene(dialogEntries);
+
+        while (!CutsceneDialogController.instance.IsCutsceneFinished())
+            yield return null;
+
+        CutsceneUnpause();
+        yield return null;
+    }
+
+    public IEnumerator StartConversation(TextAsset dialog, bool withPortraits)
+    {
+        List<string> dialogEntries = DialogEngine.CreateDialogComponents(dialog.text);
+        ConversationController.instance.StartConversation(dialogEntries);
+        yield return null;
+    }
+
+    private void CutscenePause()
+    {
+        PauseGameplay();
+    }
+    private void CutsceneUnpause()
+    {
+        ResumeGameplay();
+    }
+
+    private void MenuPause()
+    {
+        PauseGameplay();
+        //StartCoroutine(Letterbox.instance.TurnOn(2.0f));
+        //Display a pause menu or something
+    }
+
+    private void MenuUnpause()
+    {
+        ResumeGameplay();
+        //StartCoroutine(Letterbox.instance.TurnOn(2.0f));
+        //Display a pause menu or something
+    }
+
+    bool gamePaused = false;
+    public bool Paused { get { return gamePaused; } }
+    public void PauseGameplay()
+    {
+        gamePaused = true;
+        foreach(ShmupEntity entity in GameObject.FindObjectsOfType<ShmupEntity>())
+            entity.Suspend();
+    }
+
+    public void ResumeGameplay()
+    {
+        gamePaused = false;
+        foreach (ShmupEntity entity in GameObject.FindObjectsOfType<ShmupEntity>())
+            entity.Unsuspend();
     }
 }

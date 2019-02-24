@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBitCloud : MonoBehaviour {
+    public ShmupEnemy associatedEnemy;
 
     public GameObject bit;
 
@@ -34,13 +36,32 @@ public class EnemyBitCloud : MonoBehaviour {
 
             bits.Add(myBit);
         }
-	}
+
+        if(bitCount == 0)
+            StartCoroutine(GarbageCollect());
+    }
 
     private void OnTriggerEnter(Collider col)
     {
+        ShmupEntity entity = col.GetComponentInParent<ShmupEntity>();
         foreach(FloatingBit myBit in bits)
-        {
-            myBit.TrackObject(col.gameObject);
-        }
+            myBit.TrackObject(entity);
+
+        StartCoroutine(GarbageCollect());
+    }
+
+    bool startedGarbageCollection;
+    private IEnumerator GarbageCollect()
+    {
+        if (startedGarbageCollection)
+            yield break;
+        startedGarbageCollection = true;
+
+        yield return new WaitForSeconds(2.0f);
+        while (bits.Where(x => x != null).Count() != 0 && associatedEnemy.IsDead())
+            yield return new WaitForSeconds(3.0f);
+
+        Destroy(associatedEnemy.gameObject);
+        yield return null;
     }
 }

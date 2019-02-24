@@ -50,18 +50,10 @@ public class CameraControls : MonoBehaviour {
     public static CameraControls instance;
     void Awake()
     {
-        if (instance == null)
-        {
+        if (CameraControls.instance == null)
             instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            if (this != instance)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+        else if (this != instance)
+            Destroy(this.gameObject);
     }
 
     // Use this for initialization

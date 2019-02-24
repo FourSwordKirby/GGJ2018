@@ -1,0 +1,19 @@
+These instructions will be displayed as overlays on the game screen
+
+Move using the Left Joystick [WASD Keys]
+
+Shoot using the R1 button [Space bar]
+
+Move to the <Register> to continue
+
+Aim with the Right Joystick [Arrow Keys]
+
+[Pan Focus] Defeat enemies to unlock the <Register>
+
+Collect <Enemy Certificates> to access <Cache Bombs>
+
+[Pause] Use a <Cache Bomb> with the L1 button [X key] to stun enemies and nullify bullets
+
+After dying, you'll respawn at the closest port
+
+

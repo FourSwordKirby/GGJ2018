@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EncounterTrigger : MonoBehaviour {
 
-    public EncounterSpawner linkedEncounter;
+    public Encounter linkedEncounter;
 
     private void OnTriggerEnter(Collider col)
     {

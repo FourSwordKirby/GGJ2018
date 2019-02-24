@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4005370856023524}
   - component: {fileID: 114645154824834726}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4746277235658568}
   - component: {fileID: 198590181778069834}
   - component: {fileID: 199510059606637206}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 0-Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4135952266082454}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4010925354964822}
   - component: {fileID: 198533916105836850}
   - component: {fileID: 199024180307107970}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: 1-Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4240261034705912}
   - component: {fileID: 108649637384899484}
   - component: {fileID: 114203681789984244}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4257257274219522}
   - component: {fileID: 33706047744580792}
   - component: {fileID: 23545840425899694}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4842845030863262}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053485940245472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 15.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0.70000076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4842845030863262}

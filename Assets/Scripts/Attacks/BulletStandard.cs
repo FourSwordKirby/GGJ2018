@@ -63,4 +63,34 @@ public class BulletStandard : Bullet
             StartCoroutine(Die());
         }
     }
+
+    public override bool IsCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+
+    public override void Suspend()
+    {
+        return;
+    }
+
+    public override void Unsuspend()
+    {
+        return;
+    }
+
+    /* When the game is paused manually, bullets are stopped from moving by making time.deltatime = 0
+    Vector3 bulletVelocity;
+    public override void Suspend()
+    {
+        bulletVelocity = this.selfBody.velocity;
+        this.selfBody.velocity = Vector3.zero;
+    }
+
+    public override void Unsuspend()
+    {
+        this.selfBody.velocity = bulletVelocity;
+    }
+    */
 }

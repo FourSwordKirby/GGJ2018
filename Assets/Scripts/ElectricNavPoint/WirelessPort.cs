@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WirelessPort : MonoBehaviour
+public class WirelessPort : MonoBehaviour, ShmupSpawnable
 {
     public int hackingThreshold;
 
@@ -81,8 +81,54 @@ public class WirelessPort : MonoBehaviour
             currentNavPoint = currentNavPoint.getNextNavPoint(Controls.getDirection());
         }
 
+        player.transform.position = currentNavPoint.transform.position - currentNavPoint.transform.forward * 4.0f; //Makes sure the player appears in front of the new port
         currentOwner.GetComponent<ShmupPlayer>().Materialize();
 
+        this.Deactivate();
+
         yield return null;
+    }
+
+    public void Spawn()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Deactivate()
+    {
+        int count = 0;
+
+        WirelessNavPoint currentNavPoint = navPoint;
+        while (currentNavPoint != null)
+        {
+            WirelessNavPoint nextNavPoint = currentNavPoint.getNextNavPoint(Controls.getDirection(), currentNavPoint);
+
+            foreach (GameObject obj in currentNavPoint.associatedDevices)
+            {
+                ShmupSpawnable spawnableObject = obj.GetComponent<ShmupSpawnable>();
+                if (spawnableObject != null)
+                    spawnableObject.Die();
+            }
+            currentNavPoint = nextNavPoint;
+
+            count++;
+            if (count > 30)
+            {
+                print("deleting nav points probably resulted in a infinite loop");
+                break;
+            }
+            //if (currentNavPoint.isEndpoint)
+            //    break;
+        }
+    }
+
+    public void Die()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public bool IsDead()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -56,10 +56,14 @@ public class BombField : MonoBehaviour {
             if (timer > expansionDuration * 1.2f && timer < expansionDuration * 1.5f)
             {
                 this.transform.localScale += Vector3.up;
-                StunHitbox.SetActive(true);
-            }
+                if(!StunHitbox.activeSelf)
+                {
+                    CameraControlsTopDown3D.instance.Shake(0.4f, 0.5f);
+                    StunHitbox.SetActive(true);
 
-            if(timer > expansionDuration * 1.5f)
+                }
+            }
+            else if (timer > expansionDuration * 1.5f)
             {
                 foreach (GameObject ring in fieldRings)
                 {
@@ -69,7 +73,6 @@ public class BombField : MonoBehaviour {
                         render.material.color *= 0.92f;
                     }
                 }
-
             }
 
             if (timer > lifeTime)

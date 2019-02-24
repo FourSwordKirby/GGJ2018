@@ -3,38 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Encounter : MonoBehaviour {
+    public List<Wave> waves;
+    int waveNumber = 0;
+    bool started;
 
-    public List<ShmupEnemy> enemies;
-
-    public bool started;
-    public bool completed;
-
-	// Use this for initialization
-	public void StartEncounter () {
-        if (!started)
+    public void Awake()
+    {
+        foreach(Wave e in waves)
         {
-            EnableEncounter();
-            started = true;
-            foreach (ShmupEnemy enemy in enemies)
-            {
-                enemy.Spawn();
-            }
+            e.DisableEncounter();
         }
     }
 
-    public void EnableEncounter()
+    public void StartEncounter()
     {
-        this.gameObject.SetActive(true);
-    }
-
-    public void DisableEncounter()
-    {
-        this.gameObject.SetActive(false);
+        if (!started)
+        {
+            started = true;
+            waveNumber = 0;
+            waves[waveNumber].StartWave();
+        }
     }
 
     private void Update()
     {
-        if (started && enemies.TrueForAll(x => x.gameObject.activeSelf == false))
-            completed = true;
+        if (!IsCompleted() && started && waves[waveNumber].IsCompleted())
+        {
+            waveNumber++;
+            if (waveNumber < waves.Count)
+                waves[waveNumber].StartWave();
+            else
+                started = false;
+        }
+    }
+
+    public bool IsCompleted()
+    {
+        return waveNumber >= waves.Count;
     }
 }

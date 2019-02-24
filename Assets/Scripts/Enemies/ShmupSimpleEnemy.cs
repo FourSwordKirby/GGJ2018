@@ -39,6 +39,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     public float rateOfFire;
     private float cooldown;
 
+    public GameObject FiringOrigin;
+
     public bool isEngaged;
 
     //External GameObjects
@@ -49,18 +51,25 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     //Components
     private Vector3 spawnLocation;
 
-    private Rigidbody selfBody;
-    private Animator anim;
+    public Rigidbody selfBody;
+    public Animator anim;
 
-    private void Awake()
+    protected void Awake()
     {
         spawnLocation = this.transform.position;
-        selfBody = this.GetComponent<Rigidbody>();
-        anim = this.GetComponent<Animator>();
+    }
+
+    protected void Start()
+    {
+        if (target == null)
+            target = ShmupGameManager.instance.player.gameObject;
+
+        if (movementMode == MovementMode.bouncing)
+            this.selfBody.velocity = speed * (Vector3.left * Random.Range(-1.0f, 1.0f) + Vector3.forward * Random.Range(-1.0f, 1.0f));
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (!isEngaged)
             return;
@@ -69,13 +78,14 @@ public class ShmupSimpleEnemy : ShmupEnemy {
         switch (movementMode)
         {
             case MovementMode.tracking:
-                this.transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, speed);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
                 break;
             case MovementMode.patroling:
                 break;
             case MovementMode.bouncing:
                 break;
             case MovementMode.rigid:
+                this.selfBody.isKinematic = true;
                 break;
         }
 
@@ -131,7 +141,7 @@ public class ShmupSimpleEnemy : ShmupEnemy {
             Bullet bullet = Instantiate(bulletPrefab).GetComponent<Bullet>();
             bullet.hitbox.isPlayerOwned = false;
             bullet.hurtbox.isPlayerOwned = false;
-            bullet.gameObject.transform.position = this.gameObject.transform.position;
+            bullet.gameObject.transform.position = this.FiringOrigin.transform.position;
 
             float offset = (i - bulletStreams / 2) * deltaAngle;
 
@@ -159,14 +169,13 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     {
         anim.SetTrigger("Stun");
         this.rateOfFire = 0;
-        CameraControlsTopDown3D.instance.Shake(0.1f, 0.1f);
     }
 
     public override void Die()
     {
+        this.health = 0;
         anim.SetTrigger("Die");
-        CameraControlsTopDown3D.instance.Shake(0.1f, 0.25f);
-        print("Implement this properly (as in actually destroy the enemy object via animator or something");
+        CameraControlsTopDown3D.instance.Shake(0.2f, 0.3f);
         this.rateOfFire = 0;
     }
 
@@ -191,5 +200,20 @@ public class ShmupSimpleEnemy : ShmupEnemy {
         GameObject ping = Instantiate(pingEffect);
         ping.transform.position = this.transform.position + Vector3.up * 0.1f;
         ping.GetComponent<PingEffect>().duration = 0.5f;
+    }
+
+    public override bool IsDefeated()
+    {
+        return this.health <= 0;
+    }
+
+    public override void Suspend()
+    {
+        isEngaged = false;
+    }
+
+    public override void Unsuspend()
+    {
+        isEngaged = true;
     }
 }

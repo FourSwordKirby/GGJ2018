@@ -1,0 +1,87 @@
+Current Macros:
+	Space: Start Level
+	Q: Show level start animation
+	P+B: Go to main menu and restart game
+	Left: Toggle left emotion
+	Right: Toggle right emotion
+	Space: Advance IRC chat text
+	Y: Next encounter
+
+Level structure gameplan:
+
+Tutorial area:
+	Learn about moving and hitting barricades
+	Learn about turning and more moving
+	Learn about aiming at moving high-priority targets
+	Learn about dodging the bullets of targets
+	Learn about arrangments of enemies and targets
+	Learn about bombs
+	Learn about respawning (The player model is destroyed by a giant lazer blast and then respawns,
+				The dialog makes mention towards rebooting your systems).
+	Enter rest of the game
+
+
+First room is a single room with a transforming layout. Here the characters give you a basic
+rundown of the situation + the story. Similar to the training rooms in fps games, it's essentially
+a controlled environment for the player to learn the game an controls.
+(story wise, the characters chat a bit about how it's a "loading room" and what not)
+
+Level layouts:
+1. Generic circuit card
+	Standard arena shooting
+	The last layout acts like a 4 player pong game. Need to destroy all 4 "paddles" which have master nodes embeded in it. The pong balls bounce
+	around and explode into stuns on impact
+2. Transistor corridor
+	Cooridoor shooting
+	-Nixed for time/redundant with 5-2
+3. Graphics card
+	A mix of arena into cooridoor shooting. Has a tps kind of feel like the later nier levels
+4. Multi level'd circuit board
+	An isometric jaunt
+	Cut floors
+5. Dramatic circle boss chamber
+	Just a staging area/cutscene area
+5-2. Groove coaster inspired tube ride
+	Groove coaster x Touhou x credits
+
+
+//Complicated deprecated level designs
+First gameplay room:
+A boxhead like sandbox environment. Survive against multiple waves of incoming enemies and what not. Ends with a roaming boss fight.
+
+
+Second gameplay room:
+A great-cave offensive kind of confusing layouts. Multiple rooms that link together through. Everything leads to a central room with a large locked door
+This section ends with the player exiting a door and going "outside". 
+-Insert some kind of creative boss fight
+
+
+
+Third gameplay room:
+An outdoorsy looking environment. Terrain and layout resemble an outdoor canyon. Takes a traditional shmup kind of feel, with regards to 3d landscape passing underneath
+and elevated background terrain. 
+-Possibly make it a top down shooter segment like the traditional shmups (ie, ikaruga, american flash game stuff with helicopters etc).
+-At the end, the player goes through a hangar entrance into the central area. This is the "core" of the system.
+-Insert some kind of creative boss fight
+
+
+
+Central complex cooridor: This level is basically several smaller rooms surrounding a central room. 
+The player goes through the surrounding rooms and then enters the central room.
+-Maybe have a boss fight?
+
+
+Boss fight: The boss fight has 3 phases
+1. A fight in the central floor which is a twin stick sort of affair. The fight takes place in a
+"rising elevator" like fashion
+2. After that fight, the next fight takes place in a horizontal cooridoor and acts like a sidescrolling 
+shmup level
+3. The final fight takes place in a vertical cooridoor and plays like a touhou game (its the most intense)
+
+
+
+Good boss fight riffs
+(Stationary tower (ala contra))
+(massive hangar door airship thing (like most american arcade game things))
+(Space invader clone lol?)
+(Shatter tier breakout style boss fight)

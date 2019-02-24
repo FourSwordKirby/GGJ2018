@@ -2064,8 +2064,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616526805258728}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6499997}
+  m_LocalRotation: {x: 5.995173e-13, y: 0.0029489524, z: 4.112197e-13, w: 0.9999957}
+  m_LocalPosition: {x: -0.0044363434, y: 0.000006914139, z: -0.6499863}
   m_LocalScale: {x: 0.18139516, y: 0.32027844, z: 0.75089955}
   m_Children: []
   m_Father: {fileID: 4065915072754094}
@@ -2308,8 +2308,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1491206117672680}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0999994, y: 0, z: 12}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.70000076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4881672368250132}
@@ -2467,8 +2467,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1808816664939852}
-  m_LocalRotation: {x: -0, y: 0.00000011920929, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05999978, y: 0, z: -0.66000015}
+  m_LocalRotation: {x: 6.3369503e-13, y: 0.002955828, z: 4.4927576e-13, w: 0.99999565}
+  m_LocalPosition: {x: 0.055552933, y: 0.000006914139, z: -0.6599873}
   m_LocalScale: {x: 0.18139514, y: 0.32027844, z: 0.75089943}
   m_Children: []
   m_Father: {fileID: 4583087316776274}
@@ -2480,8 +2480,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1828415196718514}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.060000073, y: 0, z: -0.6599998}
+  m_LocalRotation: {x: 0.0000000130393705, y: -0.000036492936, z: 0.000000059604176,
+    w: 1}
+  m_LocalPosition: {x: 0.06005506, y: 0.00000059604645, z: -0.65999883}
   m_LocalScale: {x: 0.18139519, y: 0.32027844, z: 0.7508996}
   m_Children: []
   m_Father: {fileID: 4944481272629468}
@@ -2705,8 +2706,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233552567367042}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0.6499999}
+  m_LocalRotation: {x: 7.8920727e-17, y: -0.000046581023, z: -1.2756617e-16, w: 1}
+  m_LocalPosition: {x: 0.000070005655, y: 0.00000059604645, z: -0.65}
   m_LocalScale: {x: 0.1813952, y: 0.32027844, z: 0.7508997}
   m_Children: []
   m_Father: {fileID: 4162715070714852}
@@ -2718,8 +2719,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263259645967380}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.050000053, y: 0, z: -0.6599997}
+  m_LocalRotation: {x: 7.993596e-11, y: 0.0028912425, z: -1.0936612e-12, w: 0.9999959}
+  m_LocalPosition: {x: -0.054349344, y: 0.000006914139, z: -0.659986}
   m_LocalScale: {x: 0.18139516, y: 0.32027844, z: 0.7508996}
   m_Children: []
   m_Father: {fileID: 4929874596432948}
@@ -2852,8 +2853,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001409383158738}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04999995, y: 0, z: -0.66}
+  m_LocalRotation: {x: 0.000000029804706, y: -0.000045791257, z: 0.00000002980219,
+    w: 1}
+  m_LocalPosition: {x: -0.04993145, y: 0.00000071525574, z: -0.65999985}
   m_LocalScale: {x: 0.18139526, y: 0.32027844, z: 0.7508999}
   m_Children: []
   m_Father: {fileID: 4114338968657216}
@@ -5504,7 +5506,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000005283153, y: 0, z: 0.292029}
+  m_ConnectedAnchor: {x: -0.000022049078, y: 0.000035720623, z: 0.29203102}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5538,7 +5540,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000048518746, y: 0, z: 0.29202893}
+  m_ConnectedAnchor: {x: 0.00000019407499, y: 0.000003079364, z: 0.29202956}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5572,7 +5574,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.019968376, y: 0, z: 0.29959556}
+  m_ConnectedAnchor: {x: -0.019969173, y: 0.000003695237, z: 0.2995973}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5606,7 +5608,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.046200596, y: 0, z: 0.31182733}
+  m_ConnectedAnchor: {x: 0.0461993, y: 0.000003079364, z: 0.31183094}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5640,7 +5642,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.019969812, y: 0, z: 0.29959574}
+  m_ConnectedAnchor: {x: -0.019986514, y: 0.000035720623, z: 0.29960847}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5674,7 +5676,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 1}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.046200663, y: 0, z: 0.31182796}
+  m_ConnectedAnchor: {x: 0.04617968, y: 0.000035720623, z: 0.31181642}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -5713,8 +5715,8 @@ MonoBehaviour:
   segments: 9
   borderPercentage: 0.25
   innerRadius: 1
-  outerRadius: 9
-  thickness: 1
+  outerRadius: 15
+  thickness: 1.5
   glowMaterial: {fileID: 2100000, guid: ba2c760be787e534095d03377605b02e, type: 2}
   floorMaterial: {fileID: 2100000, guid: 92488893eace38d498e509e1b9b4352a, type: 2}
   fieldPrefab: {fileID: 114446236928981594, guid: 7b211251e3830144c86e6bb151eec8c3,
@@ -5733,6 +5735,7 @@ MonoBehaviour:
   boxName: Hurtbox
   owner: {fileID: 1491206117672680}
   isPlayerOwned: 1
+  isProjectile: 0
 --- !u!114 &114399890270075332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5772,13 +5775,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  targetRotation: 0
-  currentRotation: 180
+  targetRotation: 357.39545
+  currentRotation: 357.39545
   maxHealth: 3
   health: 3
-  bombs: 0
-  bulletSpeed: 20
-  rateOfFire: 8
+  maxBombCharge: 400
+  startingBombs: 0
+  bombCharge: 4
+  bulletSpeed: 30
+  rateOfFire: 10
   firingOrigin: {fileID: 1137293237620690}
   bulletPrefab: {fileID: 1623639433359514, guid: 3747aa32dcfce584a9e8e9207215bc3c,
     type: 2}
@@ -5908,7 +5913,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 792494289
+  randomSeed: -551916994
   InitialModule:
     serializedVersion: 3
     enabled: 1

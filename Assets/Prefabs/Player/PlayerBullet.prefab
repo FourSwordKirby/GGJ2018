@@ -145,6 +145,7 @@ MonoBehaviour:
   boxName: BulletHurtbox
   owner: {fileID: 1623639433359514}
   isPlayerOwned: 1
+  isProjectile: 1
 --- !u!114 &114391449587368144
 MonoBehaviour:
   m_ObjectHideFlags: 1

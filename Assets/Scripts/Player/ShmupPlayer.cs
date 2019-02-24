@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShmupPlayer : ShmupEntity {
+public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     public float speed;
     public float targetRotation;
@@ -10,7 +10,10 @@ public class ShmupPlayer : ShmupEntity {
 
     public int maxHealth;
     public int health;
-    public int bombs;
+
+    public int maxBombCharge;
+    public int startingBombs;
+    public int bombCharge;
 
     public float bulletSpeed;
     public float rateOfFire;
@@ -36,9 +39,11 @@ public class ShmupPlayer : ShmupEntity {
     //Components
     private Rigidbody selfBody;
 
+    public const int MIN_BOMB_CHARGE = 100;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         this.selfBody = this.GetComponent<Rigidbody>();
 	}
 	
@@ -88,17 +93,17 @@ public class ShmupPlayer : ShmupEntity {
 
 
         bombCooldown -= Time.deltaTime;
-        if(Controls.bombInputDown() && bombs > 0 && bombCooldown <= 0.0f)
+        if(Controls.bombInputDown() && bombCharge >= MIN_BOMB_CHARGE && bombCooldown <= 0.0f)
         {
             bombCooldown = bombCooldownDuration;
 
-            bombs--;
+            bombCharge-= MIN_BOMB_CHARGE;
             UseBomb();
         }
 
         //Did we die?
         if (health <= 0)
-            StartCoroutine(this.Die());
+            Die();
     }
 
     void ShootBullet()
@@ -106,6 +111,7 @@ public class ShmupPlayer : ShmupEntity {
         Bullet bullet = Instantiate(bulletPrefab).GetComponent<Bullet>();
         bullet.hitbox.isPlayerOwned = true;
         bullet.hurtbox.isPlayerOwned = true;
+        bullet.hitbox.owner = this.gameObject;
 
         float xDir = Mathf.Sin(Mathf.Deg2Rad * targetRotation);
         float yDir = Mathf.Cos(Mathf.Deg2Rad * targetRotation);
@@ -122,7 +128,8 @@ public class ShmupPlayer : ShmupEntity {
 
     public override void OnHit(float damage)
     {
-        this.health -= 1;
+        print("Need a visual effect for the player getting hit");
+        this.health -= (int)damage;
     }
 
     public override void OnStun()
@@ -130,12 +137,12 @@ public class ShmupPlayer : ShmupEntity {
         throw new System.NotImplementedException();
     }
 
-    public void GainBomb()
+    public void GainBomb(int bombValue)
     {
-        this.bombs++;
+        this.bombCharge = Mathf.Min(bombCharge + bombValue, maxBombCharge);
     }
 
-    public IEnumerator Die()
+    private IEnumerator HandleDeath()
     {
         yield return new WaitForSeconds(2.0f);
 
@@ -158,12 +165,40 @@ public class ShmupPlayer : ShmupEntity {
         this.inGrazeForm = true;
     }
 
-
-    private int startingBombs = 30;
     public void Spawn(SpawnPoint spawn)
     {
         this.health = maxHealth;
-        this.bombs = startingBombs;
+        this.bombCharge = Mathf.Max(startingBombs, (int)(this.bombCharge * 0.5f));
         this.transform.position = spawn.transform.position;
+    }
+
+    public override bool IsCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Suspend()
+    {
+        Controls.DisableGameplayControls();
+    }
+
+    public override void Unsuspend()
+    {
+        Controls.EnableGameplayControls();
+    }
+
+    public void Spawn()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Die()
+    {
+        StartCoroutine(HandleDeath());
+    }
+
+    public bool IsDead()
+    {
+        return this.health <= 0;
     }
 }

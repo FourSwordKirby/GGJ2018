@@ -1,0 +1,5 @@
+[Pan Focus] Partner: Did you notice those bits released from destroyed enemies
+
+Partner: Collecting these bits gives you access to your bombs
+
+[Pan Player] Partner: Use them to with [c] to clear large swaths of obstacles and stun enemies

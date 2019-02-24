@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23107872835741422}
   - component: {fileID: 54969745910542806}
   - component: {fileID: 114220998097445508}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: EnemyBit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,4 +112,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfRenderer: {fileID: 23107872835741422}
   selfbody: {fileID: 54969745910542806}
-  trackingSpeed: 3.91
+  trackingSpeed: 15
+  chargeValue: 1

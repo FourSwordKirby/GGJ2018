@@ -1,0 +1,3 @@
+Partner: Lastly, whenever you sustain enough damage, you'll be unable to maintain your current form
+
+Partner: When this happens, you'll respawn at the latest [save point]

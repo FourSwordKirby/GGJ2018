@@ -19,8 +19,11 @@ TagManager:
   - Enemy
   - EnemyBullet
   - EnemyBomb
-  - Interaction
+  - PlayerPickup
+  - Interactable
   - EventTrigger
+  - Environment
+  - Boundary
   - 
   - 
   - 
@@ -33,11 +36,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Locked
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HealthBar
+    uniqueID: 1217102835
     locked: 0

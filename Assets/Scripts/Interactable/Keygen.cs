@@ -53,7 +53,7 @@ public class Keygen : MonoBehaviour
     {
         if(currentOwner.GetComponent<ShmupPlayer>() != null)
         {
-            currentOwner.GetComponent<ShmupPlayer>().GainBomb();
+            currentOwner.GetComponent<ShmupPlayer>().GainBomb(ShmupPlayer.MIN_BOMB_CHARGE);
             hackingProgress = 0;
         }
     }

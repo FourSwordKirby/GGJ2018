@@ -1,0 +1,15 @@
+Player: So what are we waiting around for right now?
+
+Partner: This is the tutorial level
+
+Partner: We'll be adjusting you to the base game controls here
+
+Partner: For starters, try destroying those blocks
+
+Partner: Use the [z] button to shoot, and move around with the [left stick]
+
+Player: Anything to get things moving
+
+[Pan Focus] Partner: When you're done, make your way to the reinitialization station
+
+[Pan Player]

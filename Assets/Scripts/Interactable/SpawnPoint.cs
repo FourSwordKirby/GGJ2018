@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : ShmupEntity {
+public class SpawnPoint : ShmupEntity, ShmupSpawnable {
 
     public int hackingThreshold;
 
@@ -64,5 +64,35 @@ public class SpawnPoint : ShmupEntity {
     public override void OnStun()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override bool IsCompleted()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Suspend()
+    {
+        return;
+    }
+
+    public override void Unsuspend()
+    {
+        return;
+    }
+
+    public void Spawn()
+    {
+        activated = true;
+    }
+
+    public void Die()
+    {
+        activated = false;
+    }
+
+    public bool IsDead()
+    {
+        return !activated;
     }
 }

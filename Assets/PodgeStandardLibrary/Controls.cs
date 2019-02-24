@@ -33,7 +33,14 @@ public class Controls {
         else
             yAxis = Input.GetAxis("Keyboard Vertical");
 
-        return new Vector2(xAxis, yAxis);
+        float perspectiveRotation = -Mathf.Deg2Rad * CameraControlsTopDown3D.instance.targetRotation_Y;
+
+        //Explanation here: https://matthew-brett.github.io/teaching/rotation_2d.html
+        //I can't remember calc lol
+        float true_xAxis = xAxis * Mathf.Cos(perspectiveRotation) - yAxis * Mathf.Sin(perspectiveRotation);
+        float true_yAxis = (xAxis * Mathf.Sin(perspectiveRotation) + yAxis * Mathf.Cos(perspectiveRotation));
+
+        return new Vector2(true_xAxis, true_yAxis);
 
     }
 
@@ -60,7 +67,14 @@ public class Controls {
         else
             yAxis = Input.GetAxis("Keyboard AimY");
 
-        return new Vector2(xAxis, yAxis);
+        float perspectiveRotation = -Mathf.Deg2Rad * CameraControlsTopDown3D.instance.targetRotation_Y;
+
+        //Explanation here: https://matthew-brett.github.io/teaching/rotation_2d.html
+        //I can't remember calc lol
+        float true_xAxis = xAxis * Mathf.Cos(perspectiveRotation) - yAxis * Mathf.Sin(perspectiveRotation);
+        float true_yAxis = (xAxis * Mathf.Sin(perspectiveRotation) + yAxis * Mathf.Cos(perspectiveRotation));
+
+        return new Vector2(true_xAxis, true_yAxis);
     }
 
     internal static bool shootInputHeld()

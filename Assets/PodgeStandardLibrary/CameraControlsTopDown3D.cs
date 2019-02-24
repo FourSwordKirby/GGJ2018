@@ -39,7 +39,9 @@ public class CameraControlsTopDown3D : MonoBehaviour {
 
     /* camera moving constants */
     public float Y_OFFSET = 40.0f;
-    public float Z_OFFSET = -7.5f;
+    public float OFFSET_FROM_PLAYER = -7.5f;
+
+    public float targetRotation_Y;
 
     private const float TARGETING_LOWER_BOUND = 0.0f;
     private const float TARGETING_UPPER_BOUND = 1.0f;
@@ -52,13 +54,14 @@ public class CameraControlsTopDown3D : MonoBehaviour {
 
     private const float PAN_SPEED = 5.0f;
 
+    public bool isFixed;
+
     public static CameraControlsTopDown3D instance;
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
         else
         {
@@ -79,11 +82,15 @@ public class CameraControlsTopDown3D : MonoBehaviour {
         max_camera_size = 2.0f * original_camera_size;
         target_camera_size = original_camera_size;
 
-        transform.position = target.transform.position + new Vector3(0, Y_OFFSET, Z_OFFSET);
+        float X_OFFSET = -OFFSET_FROM_PLAYER * Mathf.Sin(Mathf.Deg2Rad * targetRotation_Y);
+        float Z_OFFSET = -OFFSET_FROM_PLAYER * Mathf.Cos(Mathf.Deg2Rad * targetRotation_Y);
+
+        transform.position = target.transform.position + new Vector3(X_OFFSET, Y_OFFSET, Z_OFFSET);
         this.selfBody = this.GetComponent<Rigidbody>();
-	}
-	
-	void FixedUpdate () {
+    }
+
+    void FixedUpdate () {
+
         //Do shake calculations
         if (shakeDuration > 0)
         {
@@ -94,18 +101,42 @@ public class CameraControlsTopDown3D : MonoBehaviour {
                 applyShake();
         }
 
-        if(target)
-
+        float X_OFFSET = -OFFSET_FROM_PLAYER * Mathf.Sin(Mathf.Deg2Rad * targetRotation_Y);
+        float Z_OFFSET = -OFFSET_FROM_PLAYER * Mathf.Cos(Mathf.Deg2Rad * targetRotation_Y);
+        
         //Now follow the target
-        if (transform.position != target.transform.position + new Vector3(0, Y_OFFSET, Z_OFFSET))
+        if (transform.position != target.transform.position + new Vector3(X_OFFSET, Y_OFFSET, Z_OFFSET))
         {
-            float x = ((target.transform.position + new Vector3(0, Y_OFFSET, Z_OFFSET)) - transform.position).x;
-            float z = ((target.transform.position + new Vector3(0, Y_OFFSET, Z_OFFSET)) - transform.position).z;
-                selfBody.velocity = new Vector3(x * PAN_SPEED, 0, z * PAN_SPEED);
+            float x = ((target.transform.position + new Vector3(X_OFFSET, Y_OFFSET, Z_OFFSET)) - transform.position).x;
+            float y = ((target.transform.position + new Vector3(X_OFFSET, Y_OFFSET, Z_OFFSET)) - transform.position).y;
+            float z = ((target.transform.position + new Vector3(X_OFFSET, Y_OFFSET, Z_OFFSET)) - transform.position).z;
+
+            //Do not path horizontally with the player if the camera is fixed
+            if (isFixed)
+            {
+                x = 0;
+                z = 0;
+            }
+
+            selfBody.velocity = new Vector3(x * PAN_SPEED, y * PAN_SPEED, z * PAN_SPEED);
         }
         else
         {
             selfBody.velocity.Set(0.0f, 0.0f, 0.0f);
+        }
+
+        //Match the target rotation
+        if((targetRotation_Y - transform.rotation.eulerAngles.y) > 1.0f)
+        {
+            float y = targetRotation_Y - transform.rotation.eulerAngles.y;
+
+
+            selfBody.angularVelocity = new Vector3(0, y * PAN_SPEED * Time.deltaTime, 0);
+        }
+        else
+        {
+            selfBody.angularVelocity.Set(0.0f, 0.0f, 0.0f);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotation_Y, transform.rotation.eulerAngles.z);
         }
 
         //used to scale the camera's size in response to more targe
@@ -193,7 +224,6 @@ public class CameraControlsTopDown3D : MonoBehaviour {
                         bool Force = true, 
                         ShakePresets Direction = ShakePresets.BOTH)
     {
-        print("shaking");
         if(!Force && ((shakeOffset.x != 0) || (shakeOffset.y != 0)))
 			return;
 		shakeIntensity = Intensity;
