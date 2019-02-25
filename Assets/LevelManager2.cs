@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager2 : ShmupLevel {
     public bool PlayOpeningCutscene;
@@ -13,9 +14,14 @@ public class LevelManager2 : ShmupLevel {
         StartCoroutine(IntroSequence());
     }
 
+    bool endingLevel;
     public override void EndLevel()
     {
-        EndSequence();
+        if (!endingLevel)
+        {
+            endingLevel = true;
+            StartCoroutine(EndSequence());
+        }
     }
 
     public override bool IsFinished()
@@ -25,7 +31,11 @@ public class LevelManager2 : ShmupLevel {
 
     IEnumerator IntroSequence()
     {
-        yield return new WaitForSeconds(0.5f);
+        ChapterHud.instance.StartLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
 
         if (PlayOpeningCutscene)
         {
@@ -42,8 +52,13 @@ public class LevelManager2 : ShmupLevel {
         ShmupGameManager.instance.RespawnPlayer();
     }
 
-    void EndSequence()
+    IEnumerator EndSequence()
     {
-        Debug.Log("I'm ending the level");
+        ChapterHud.instance.EndLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(2);
     }
 }

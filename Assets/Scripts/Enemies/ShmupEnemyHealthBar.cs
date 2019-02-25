@@ -38,7 +38,10 @@ public class ShmupEnemyHealthBar : MonoBehaviour
     {
         targetHealthValue = Enemy.GetHealth();
         if(targetHealthValue != maxHealth)
-            StartCoroutine(FadeIn());
+        {
+            healthSprite.color = Color.white;
+            redHealthSprite.color = Color.red;
+        }
 
         if (lastHealthValue != targetHealthValue)
         {
@@ -68,18 +71,5 @@ public class ShmupEnemyHealthBar : MonoBehaviour
 
         redHealthBar.alphaCutoff = 1 - redHealthBar.alphaCutoff;
         healthBar.alphaCutoff = 1 - healthBar.alphaCutoff;
-    }
-
-    IEnumerator FadeIn()
-    {
-        float timer = 0.2f;
-        while(timer > 0)
-        {
-            healthSprite.color = Color.Lerp(Color.clear, Color.white, timer / 0.2f);
-            redHealthSprite.color = Color.Lerp(Color.clear, Color.red, timer / 0.2f);
-            timer -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        yield return null;
     }
 }

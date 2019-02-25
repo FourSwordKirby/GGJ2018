@@ -10,7 +10,17 @@ public class ChapterHud : MonoBehaviour {
     public Text chapterSubtitle;
     public UILoadingBar loadingBar;
 
-    public Animation openingAnimation;
+    public Animation animations;
+
+    public static ChapterHud instance;
+
+    private void Awake()
+    {
+        if (ChapterHud.instance == null)
+            instance = this;
+        else if (this != instance)
+            Destroy(this.gameObject);
+    }
 
     private void Start()
     {
@@ -24,16 +34,36 @@ public class ChapterHud : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            PlayAnimation();
+            PlayOpeningAnimation();
         }
 	}
 
-    void PlayAnimation()
+    public void StartLevel()
+    {
+        PlayOpeningAnimation();
+    }
+
+    public void EndLevel()
+    {
+        PlayClosingAnimation();
+    }
+
+    public bool AnimationFinished()
+    {
+        return !animations.isPlaying;
+    }
+
+    void PlayOpeningAnimation()
     {
         framing.SetActive(true);
         chapterTitle.gameObject.SetActive(true);
         chapterSubtitle.gameObject.SetActive(true);
         loadingBar.gameObject.SetActive(true);
-        openingAnimation.Play();
+        animations.Play("ChapterScreenAnimation");
+    }
+
+    void PlayClosingAnimation()
+    {
+        animations.Play("ChapterEndAnimation");
     }
 }

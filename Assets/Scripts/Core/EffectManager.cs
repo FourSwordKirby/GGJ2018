@@ -5,6 +5,8 @@ using UnityEngine;
 public class EffectManager : MonoBehaviour {
 
     public GameObject bulletDeathEffect;
+    public Rigidbody signalBeam;
+    public Rigidbody UnlockSignalBeam;
 
     //Instance Managing;
     public static EffectManager instance;
@@ -22,6 +24,40 @@ public class EffectManager : MonoBehaviour {
                 Destroy(this.gameObject);
             }
         }
+    }
+
+    public void SpawnLinkSignal(Vector3 originPos, Vector3 targetPos, bool isUnlockSignal = false)
+    {
+        StartCoroutine(SpawnLockSignalEffect(originPos, targetPos, isUnlockSignal));
+    }
+
+    private IEnumerator SpawnLockSignalEffect(Vector3 originPos, Vector3 targetPos, bool isUnlockSignal)
+    {
+        Rigidbody beam;
+        if (isUnlockSignal)
+            beam = UnlockSignalBeam;
+        else
+            beam = signalBeam;
+
+        Rigidbody signal = Instantiate(beam, originPos, Quaternion.identity);
+        Vector3 dirVector = targetPos - originPos;
+
+        float time = dirVector.magnitude;
+
+        float upMagnitude = -Physics.gravity.y * 0.5f;
+
+
+        signal.velocity = dirVector.x * Vector3.right + upMagnitude * Vector3.up + dirVector.z * Vector3.forward;
+
+        float timer = 0;
+        float duration = 1f;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(signal.gameObject);
+        yield return null;
     }
 
     public void SpawnCollisionEffect(EntityType victimType, EntityType attackerType, Vector3 victomPosition)

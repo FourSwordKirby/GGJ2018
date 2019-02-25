@@ -100,10 +100,6 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
             bombCharge-= MIN_BOMB_CHARGE;
             UseBomb();
         }
-
-        //Did we die?
-        if (health <= 0)
-            Die();
     }
 
     void ShootBullet()
@@ -128,8 +124,9 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     public override void OnHit(float damage)
     {
-        print("Need a visual effect for the player getting hit");
         this.health -= (int)damage;
+        if (this.health <= 0)
+            this.Die();
     }
 
     public override void OnStun()
@@ -144,7 +141,8 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     private IEnumerator HandleDeath()
     {
-        yield return new WaitForSeconds(2.0f);
+        //Death animation happens here
+        print("play player death anim and then respawn the player");
 
         ShmupGameManager.instance.RespawnPlayer();
 
@@ -165,8 +163,14 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
         this.inGrazeForm = true;
     }
 
+    public void FreezeVelocity()
+    {
+        this.selfBody.velocity = Vector3.zero;
+    }
+
     public void Spawn(SpawnPoint spawn)
     {
+        this.gameObject.SetActive(true);
         this.health = maxHealth;
         this.bombCharge = Mathf.Max(startingBombs, (int)(this.bombCharge * 0.5f));
         this.transform.position = spawn.transform.position;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager1 : ShmupLevel {
 
@@ -17,9 +18,14 @@ public class LevelManager1 : ShmupLevel {
         StartCoroutine(IntroSequence());
     }
 
+    bool endingLevel;
     public override void EndLevel()
     {
-        EndSequence();
+        if (!endingLevel)
+        {
+            endingLevel = true;
+            StartCoroutine(EndSequence());
+        }
     }
 
     public override bool IsFinished()
@@ -29,10 +35,14 @@ public class LevelManager1 : ShmupLevel {
 
     IEnumerator IntroSequence()
     {
-        yield return new WaitForSeconds(0.5f);
-
         if (PlayOpeningBanter)
         {
+            ChapterHud.instance.StartLevel();
+            while (!ChapterHud.instance.AnimationFinished())
+            {
+                yield return null;
+            }
+
             List<string> dialogEntries = DialogEngine.CreateDialogComponents(openingBanter.text);
             ShmupGameManager.instance.PauseGameplay();
             ConversationController.instance.StartConversation(dialogEntries);
@@ -49,19 +59,23 @@ public class LevelManager1 : ShmupLevel {
 
     private void Update()
     {
-        if (mainEncounter.IsCompleted())
-            EndLevel();
         if(spaceInvaderWave.started && !spaceInvaderDialogStarted)
         {
             spaceInvaderDialogStarted = true;
             List<string> dialogEntries = DialogEngine.CreateDialogComponents(spaceInvaderBanter.text);
             ConversationController.instance.StartConversation(dialogEntries);
         }
+        if (mainEncounter.IsCompleted())
+            EndLevel();
     }
 
-    void EndSequence()
+    IEnumerator EndSequence()
     {
-        Application.LoadLevel(2);
-        Debug.Log("end level");
+        ChapterHud.instance.EndLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(2);
     }
 }

@@ -10,6 +10,14 @@ public class Barrier : ShmupEntity
 
     public Rigidbody signalBeam;
 
+    private void Start()
+    {
+        foreach(SecurityLock lockObj in locks)
+        {
+            lockObj.AddLinkedObject(this.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,20 +31,14 @@ public class Barrier : ShmupEntity
     public override void OnHit(float damage)
     {
         if (cooldownTimer > 0)
+        {
             return;
+        }
         else
         {
             foreach(Vector3 pos in locks.Select(x => x.transform.position))
             {
-                Rigidbody signal = Instantiate(signalBeam, this.transform.position, Quaternion.identity);
-                Vector3 dirVector = pos - this.transform.position;
-
-                float time = dirVector.magnitude;
-                
-                float upMagnitude = -Physics.gravity.y * 0.5f;
-
-
-                signal.velocity = dirVector.x * Vector3.right + upMagnitude * Vector3.up + dirVector.z * Vector3.forward;
+                EffectManager.instance.SpawnLinkSignal(transform.position, pos);
             }
         }
     }

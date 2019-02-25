@@ -32,13 +32,14 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
         if (owner != currentOwner)
         {
             currentOwner = owner;
-            ResetProgress();
+            //ResetProgress();
         }
 
-        hackingProgress++;
+        //hackingProgress++;
 
-        if (hackingProgress > hackingThreshold)
-            Teleport();
+        //if (hackingProgress > hackingThreshold)
+
+        Teleport();
     }
 
     void ResetProgress()
@@ -48,7 +49,8 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
 
     void Teleport()
     {
-        if (currentOwner.GetComponent<ShmupPlayer>() != null)
+        print("teleportcall");
+        if (currentOwner.GetComponent<ShmupPlayer>() != null && !currentOwner.GetComponent<ShmupPlayer>().inGrazeForm)
         {
             StartCoroutine(TransmitEntity(currentOwner));
             hackingProgress = 0;
@@ -58,6 +60,7 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
     IEnumerator TransmitEntity(GameObject player)
     {
         currentOwner.GetComponent<ShmupPlayer>().Graze();
+        currentOwner.GetComponent<ShmupPlayer>().FreezeVelocity();
 
         WirelessNavPoint currentNavPoint = navPoint;
         while(currentNavPoint != null)

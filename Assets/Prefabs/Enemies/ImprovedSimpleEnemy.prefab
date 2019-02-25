@@ -699,6 +699,8 @@ MonoBehaviour:
   target: {fileID: 0}
   rateOfFire: 0.8
   FiringOrigin: {fileID: 1342100667664154}
+  bitCount: 25
+  enemyRemains: {fileID: 114570008880110990}
   isEngaged: 1
   bulletPrefab: {fileID: 1623639433359514, guid: e3fb4830960c38c4ba4b4fd0624498fa,
     type: 2}
@@ -707,6 +709,7 @@ MonoBehaviour:
     type: 2}
   selfBody: {fileID: 54840706660748974}
   anim: {fileID: 95824041784706810}
+  randomizeFireOffset: 0
 --- !u!114 &114054344747788320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -799,7 +802,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  bitCount: 10
+  bitCount: 25
   bits: []
 --- !u!135 &135627174883553138
 SphereCollider:

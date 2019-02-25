@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager3 : ShmupLevel {
     public bool PlayOpeningCutscene;
@@ -42,9 +43,14 @@ public class LevelManager3 : ShmupLevel {
         FloorOne_GateEncounterTrigger.gameObject.SetActive(false);
     }
 
+    bool endingLevel;
     public override void EndLevel()
     {
-        EndSequence();
+        if (!endingLevel)
+        {
+            endingLevel = true;
+            StartCoroutine(EndSequence());
+        }
     }
 
     public override bool IsFinished()
@@ -54,7 +60,11 @@ public class LevelManager3 : ShmupLevel {
 
     IEnumerator IntroSequence()
     {
-        yield return new WaitForSeconds(0.5f);
+        ChapterHud.instance.StartLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
 
         if (PlayOpeningCutscene)
         {
@@ -71,10 +81,13 @@ public class LevelManager3 : ShmupLevel {
         ShmupGameManager.instance.RespawnPlayer();
     }
 
-    void EndSequence()
+    IEnumerator EndSequence()
     {
-        Debug.Log("I'm ending the level");
-
-        Application.LoadLevel(3);
+        ChapterHud.instance.EndLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(3);
     }
 }

@@ -97,8 +97,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223837301737634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 0.7, z: -1.49}
-  m_LocalScale: {x: 1.0913923, y: 0.3602079, z: 0.3602079}
+  m_LocalPosition: {x: 17.74, y: 1.1992869, z: -3.63}
+  m_LocalScale: {x: 0.5092424, y: 0.3602079, z: 2.2991595}
   m_Children:
   - {fileID: 4798069768362408}
   m_Father: {fileID: 0}
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 1623395571958380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.4119298, y: 1.5444499, z: 3.4119298}
+  m_LocalScale: {x: 8.717556, y: 8.717557, z: 8.717557}
   m_Children: []
   m_Father: {fileID: 4798069768362408}
   m_RootOrder: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   boxName: Hurtbox
   owner: {fileID: 1223837301737634}
   isPlayerOwned: 0
+  isProjectile: 0
 --- !u!114 &114717932152377374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locks:
+  - {fileID: 0}
   - {fileID: 0}
   model: {fileID: 1700731236036760}
   signalBeam: {fileID: 54491081942659888, guid: 0a4f972f598312e41b33eb4fd91cbce3,

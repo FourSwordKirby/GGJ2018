@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SecurityLock : ShmupEntity
@@ -13,6 +14,8 @@ public class SecurityLock : ShmupEntity
     public Renderer selfRenderer;
     public Material onMaterial;
     public Material offMaterial;
+
+    private List<GameObject> linkedObjects = new List<GameObject>();
 
     float timer;
     // Update is called once per frame
@@ -36,6 +39,11 @@ public class SecurityLock : ShmupEntity
             selfRenderer.material = offMaterial;
     }
 
+    public void AddLinkedObject(GameObject obj)
+    {
+        linkedObjects.Add(obj);
+    }
+
     public override void OnHit(float damage)
     {
         hackingProgress++;
@@ -43,7 +51,15 @@ public class SecurityLock : ShmupEntity
         if (hackingProgress > hackingThreshold)
         {
             hackingProgress = 0;
-            unlocked = !unlocked;
+            unlocked = true;
+        }
+
+        if(!unlocked)
+        {
+            foreach (Vector3 pos in linkedObjects.Select(x => x.transform.position))
+            {
+                EffectManager.instance.SpawnLinkSignal(transform.position, pos, true);
+            }
         }
     }
 

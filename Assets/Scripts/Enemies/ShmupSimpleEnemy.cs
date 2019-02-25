@@ -40,6 +40,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     private float cooldown;
 
     public GameObject FiringOrigin;
+    public int bitCount;
+    public EnemyBitCloud enemyRemains;
 
     public bool isEngaged;
 
@@ -54,9 +56,14 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     public Rigidbody selfBody;
     public Animator anim;
 
+    public bool randomizeFireOffset;
+
     protected void Awake()
     {
         spawnLocation = this.transform.position;
+        if (randomizeFireOffset)
+            cooldown = Random.Range(0, 1 / rateOfFire);
+        enemyRemains.bitCount = bitCount;
     }
 
     protected void Start()
@@ -169,6 +176,7 @@ public class ShmupSimpleEnemy : ShmupEnemy {
     {
         anim.SetTrigger("Stun");
         this.rateOfFire = 0;
+        this.isEngaged = false;
     }
 
     public override void Die()

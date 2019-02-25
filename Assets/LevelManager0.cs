@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager0 : ShmupLevel {
 
@@ -36,10 +37,14 @@ public class LevelManager0 : ShmupLevel {
 
     IEnumerator IntroSequence()
     {
-        yield return new WaitForSeconds(0.5f);
-
         if (PlayOpeningCutscene)
         {
+            ChapterHud.instance.StartLevel();
+            while (!ChapterHud.instance.AnimationFinished())
+            {
+                yield return null;
+            }
+
             //TextAsset dialog = ProgressManager.instance.GetStartDialog();
             StartCoroutine(ShmupGameManager.instance.PlayCutscene(openingCutscene, true));
             yield return null;
@@ -79,6 +84,12 @@ public class LevelManager0 : ShmupLevel {
         while (ShmupGameManager.instance.Paused)
             yield return null;
 
-        Application.LoadLevel(1);
+
+        ChapterHud.instance.EndLevel();
+        while (!ChapterHud.instance.AnimationFinished())
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(1);
     }
 }

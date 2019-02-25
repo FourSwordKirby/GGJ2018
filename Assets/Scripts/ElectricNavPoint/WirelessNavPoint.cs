@@ -24,8 +24,7 @@ public class WirelessNavPoint : MonoBehaviour {
         {
             foreach (WirelessNavPoint navpoint in adjacentPoints)
             {
-                if (navpoint.adjacentPoints.Contains(this))
-                    Gizmos.DrawLine(this.transform.position, navpoint.transform.position);
+                Gizmos.DrawLine(this.transform.position, navpoint.transform.position);
             }
         }
     }
@@ -76,6 +75,8 @@ public class WirelessNavPoint : MonoBehaviour {
 
         if (adjacentPoints.Count == 0)
             return null;
+        if(adjacentPoints.Count == 1)
+            return adjacentPoints[0];
 
         if (direction != Vector3.zero)
         {

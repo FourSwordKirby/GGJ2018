@@ -9,15 +9,11 @@ public class WirelessPortHurtbox : Hurtbox3D
 {
     void OnTriggerEnter(Collider col)
     {
-        Hitbox3D hitbox = col.GetComponent<Hitbox3D>();
-        if(hitbox != null && hitbox.owner != this.owner)
+        Hurtbox3D colBox = col.GetComponent<Hurtbox3D>();
+        if (colBox != null && colBox.owner.GetComponent<ShmupPlayer>() != null)
         {
             WirelessPort entity = owner.GetComponent<WirelessPort>();
-            
-            entity.OnHit(hitbox.damage, hitbox.owner);
-
-            //Visual hit effect stuff?
-            //Vector3 hitLocation = (this.transform.position + col.bounds.ClosestPoint(this.transform.position)) / 2.0f;
+            entity.OnHit(0, colBox.owner);
         }
     }
 }

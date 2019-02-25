@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224638700252303528}
   - component: {fileID: 114697128655283502}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: LevelInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 224187240640030388}
   - component: {fileID: 222371215958894934}
   - component: {fileID: 114545114188640202}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNode (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 224356651511687048}
   - component: {fileID: 222039144398757958}
   - component: {fileID: 114633842938401206}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNode (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 222572298769105586}
   - component: {fileID: 114315315525602682}
   - component: {fileID: 95600513781449334}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNodeFilled2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224631000516024500}
   - component: {fileID: 114436312582965550}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 222827672358175924}
   - component: {fileID: 114899853410831570}
   - component: {fileID: 95806060719844100}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNodeFilled3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 224605605844880136}
   - component: {fileID: 222704231983737408}
   - component: {fileID: 114539332279900034}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 224404139218020584}
   - component: {fileID: 222022352015101710}
   - component: {fileID: 114275932927730614}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 224275371946476990}
   - component: {fileID: 222086039283499518}
   - component: {fileID: 114535278577597924}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 224264867770370746}
   - component: {fileID: 222910486632755516}
   - component: {fileID: 114004374117348140}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: HealthBarMax
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 224819069687406118}
   - component: {fileID: 222982748855784056}
   - component: {fileID: 114297295005956930}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNode (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4734523943645762}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BattleHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 222175264233258576}
   - component: {fileID: 114650470942003070}
   - component: {fileID: 95614693071272972}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNodeFilled1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 224589463843059302}
   - component: {fileID: 222187651957862320}
   - component: {fileID: 114546437539421172}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: RedHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 224244192312437122}
   - component: {fileID: 222840543483931060}
   - component: {fileID: 114544723509652030}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 222564762190454044}
   - component: {fileID: 114059092251521322}
   - component: {fileID: 95762107001187300}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: BombBarNodeFilled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224358383447958738}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: PlayerInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.69208926, b: 0.49264705, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.69208926, b: 0.49264705, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.69208926, b: 0.49264705, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.69208926, b: 0.49264705, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
