@@ -71,8 +71,8 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
 
             while (player.transform.position != ToLocation)
             {
-                player.transform.position = Vector3.MoveTowards(player.transform.position, ToLocation, 1f);
-                yield return new WaitForSeconds(0.1f);
+                player.transform.position = Vector3.MoveTowards(player.transform.position, ToLocation, 3.0f);
+                yield return new WaitForSeconds(0.2f);
             }
 
             if (currentNavPoint.isEndpoint && currentNavPoint != navPoint)

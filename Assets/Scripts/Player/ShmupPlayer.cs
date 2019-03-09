@@ -36,6 +36,11 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
     public GameObject normalForm;
     public GameObject grazeForm;
 
+    //Animations
+    public ParticleSystem DeathEffect1;
+    public ParticleSystem DeathEffect2;
+    public ParticleSystem DeathEffect3;
+
     //Components
     private Rigidbody selfBody;
 
@@ -139,13 +144,21 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
         this.bombCharge = Mathf.Min(bombCharge + bombValue, maxBombCharge);
     }
 
+    private bool dying;
     private IEnumerator HandleDeath()
     {
+        if (dying)
+            yield break;
+
+        dying = true;
         //Death animation happens here
-        print("play player death anim and then respawn the player");
-
+        DeathEffect1.Play();
+        DeathEffect2.Play();
+        DeathEffect3.Play();
+        this.normalForm.SetActive(false); //Hacky crap that should get handled elsewhere
+        CameraControlsTopDown3D.instance.Shake(0.4f, 0.6f);
+        yield return new WaitForSeconds(1.0f);
         ShmupGameManager.instance.RespawnPlayer();
-
         yield return null;
     }
 
@@ -171,9 +184,11 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
     public void Spawn(SpawnPoint spawn)
     {
         this.gameObject.SetActive(true);
+        this.normalForm.SetActive(true); //Hacky crap that should get handled elsewhere
         this.health = maxHealth;
         this.bombCharge = Mathf.Max(startingBombs, (int)(this.bombCharge * 0.5f));
         this.transform.position = spawn.transform.position;
+        dying = false;
     }
 
     public override bool IsCompleted()

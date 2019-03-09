@@ -21,6 +21,7 @@ public class ConversationController : MonoBehaviour {
 
     private bool conversationFinished;
 
+    const float AUTO_DIALOG_ADVANCE_TIME = 100.0f;
     const string NAME_ACTOR_1 = "Circe";
     const string NAME_ACTOR_2 = "Kali";
 
@@ -51,6 +52,7 @@ public class ConversationController : MonoBehaviour {
         string speaker = "";
         string dialog = "";
         bool waitForAdvance;
+        float autoAdvanceTimer = 0.0f;
 
         selfAnimator.SetTrigger("OpenDialog");
         yield return new WaitForSeconds(1.0f); //Used to offset the dialog bar appearance time
@@ -147,12 +149,16 @@ public class ConversationController : MonoBehaviour {
             else
                 waitForAdvance = false;
 
-            yield return null;
+            yield return new WaitForSeconds(0.25f);
             //Replace this with things in the control set
             while (waitForAdvance)
             {
-                if (Controls.dialogAdvanceDown())
+                autoAdvanceTimer += Time.deltaTime;
+                if (Controls.dialogAdvanceDown() || autoAdvanceTimer > AUTO_DIALOG_ADVANCE_TIME)
+                {
+                    autoAdvanceTimer = 0.0f;
                     break;
+                }
                 yield return null;
             }
         }

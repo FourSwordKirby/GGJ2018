@@ -26,7 +26,8 @@ public class FloatingBit : MonoBehaviour {
 	
     public void TrackObject(ShmupEntity obj)
     {
-        target = obj;
+        if(obj != null)
+            target = obj;
     }
 
     public void SetColor(Color color)

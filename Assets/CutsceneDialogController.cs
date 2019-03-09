@@ -137,12 +137,16 @@ public class CutsceneDialogController : MonoBehaviour
             DialogUI dialogUI = null;
             if (speaker == NAME_ACTOR_1)
             {
+                while (!dialogUIActor1.gameObject.activeSelf)
+                    yield return null;
                 selfAnimator.SetBool("SpeakingActor1", true);
                 selfAnimator.SetBool("SpeakingActor2", false);
                 dialogUI = dialogUIActor1;
             }
             else if (speaker == NAME_ACTOR_2)
             {
+                while (!dialogUIActor2.gameObject.activeSelf)
+                    yield return null;
                 selfAnimator.SetBool("SpeakingActor1", false);
                 selfAnimator.SetBool("SpeakingActor2", true);
                 dialogUI = dialogUIActor2;
@@ -167,7 +171,7 @@ public class CutsceneDialogController : MonoBehaviour
             else
                 waitForAdvance = false;
 
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.25f);
             //Replace this with things in the control set
             while (waitForAdvance)
             {

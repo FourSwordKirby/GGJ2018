@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hackingThreshold: 10
-  decayRate: 0
+  decayRate: 30
   unlocked: 0
   selfRenderer: {fileID: 23736426387634696}
   onMaterial: {fileID: 2100000, guid: bebccca09567c3c4ba7388e18be4ed9d, type: 2}

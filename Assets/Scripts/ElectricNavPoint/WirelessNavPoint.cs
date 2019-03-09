@@ -41,8 +41,9 @@ public class WirelessNavPoint : MonoBehaviour {
         {
             // Only draw a line if this NavPoint's id is less than the others.
             // This ensures each line is only drawn once.
-            if (this.id < navpoint.id)
-            {
+            //The whole id system is whack and kind of broken, just render everything
+            //if (this.id < navpoint.id)
+            //{
                 GameObject obj = new GameObject("Line Renderer");
                 obj.transform.parent = this.transform;
                 LineRenderer lr = obj.AddComponent<LineRenderer>();
@@ -53,7 +54,7 @@ public class WirelessNavPoint : MonoBehaviour {
                 lr.material = connectionMaterial;
                 lr.startWidth = 0.2f;
                 lr.endWidth = 0.2f;
-            }
+            //}
         }
 
         foreach(GameObject device in associatedDevices)

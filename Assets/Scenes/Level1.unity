@@ -1708,7 +1708,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -Press Start to SKip-
+  m_Text: -Press z to advance text-
 --- !u!222 &101003846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24370,7 +24370,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4489996511444174, guid: 9ae0bff3654b68f4599b186e871b6cd0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489996511444174, guid: 9ae0bff3654b68f4599b186e871b6cd0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -24378,7 +24378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489996511444174, guid: 9ae0bff3654b68f4599b186e871b6cd0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.09
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4489996511444174, guid: 9ae0bff3654b68f4599b186e871b6cd0, type: 2}
       propertyPath: m_LocalRotation.x
