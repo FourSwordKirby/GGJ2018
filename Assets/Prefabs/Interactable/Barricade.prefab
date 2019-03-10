@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726692864141908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.049999952, y: 0, z: 39.05}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4419664995732008}
@@ -211,6 +211,7 @@ MonoBehaviour:
   boxName: Hurtbox
   owner: {fileID: 1726692864141908}
   isPlayerOwned: 0
+  isProjectile: 0
 --- !u!114 &114725362233489182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,3 +227,5 @@ MonoBehaviour:
   hackingProgress: 0
   model: {fileID: 1987735498163446}
   selfCollider: {fileID: 1543428046841842}
+  dissolveMaterial: {fileID: 2100000, guid: c4822642162eec948adec6dc5af9ac2b, type: 2}
+  meshRenderer: {fileID: 23324681698796636}

@@ -8,6 +8,7 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
     private int hackingProgress;
     public float decayRate; //We lose 1 hacking progress point every x seconds
     float timer;
+    public MeshRenderer modelRenderer;
 
     public GameObject currentOwner;
     public WirelessNavPoint navPoint;
@@ -127,7 +128,21 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
 
     public void Die()
     {
+        StartCoroutine(DissolveAnim());
+    }
+
+    private IEnumerator DissolveAnim()
+    {
+        float dissolveTime = 1.0f;
+        float animTimer = dissolveTime;
+        while(animTimer > 0)
+        {
+            animTimer -= Time.deltaTime;
+            modelRenderer.material.SetFloat("_DissolveIntensity", 1.0f-(animTimer / dissolveTime));
+            yield return null;
+        }
         this.gameObject.SetActive(false);
+        yield return null;
     }
 
     public bool IsDead()

@@ -55,7 +55,7 @@ public class ConversationController : MonoBehaviour {
         float autoAdvanceTimer = 0.0f;
 
         selfAnimator.SetTrigger("OpenDialog");
-        yield return new WaitForSeconds(1.0f); //Used to offset the dialog bar appearance time
+        yield return new WaitForSeconds(1.4f); //Used to offset the dialog bar appearance time
 
         for (int i = 0; i < dialogComponents.Count; i++)
         {
@@ -120,12 +120,30 @@ public class ConversationController : MonoBehaviour {
             {
                 //selfAnimator.SetBool("SpeakingActor1", true);
                 //selfAnimator.SetBool("SpeakingActor2", false);
+                dialogUIActor1.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
+                dialogUIActor2.dialogBox.color = Color.white;
+
+                dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
+                dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
+                dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+                dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+
+
                 dialogUI = dialogUIActor1;
             }
             else if (speaker == NAME_ACTOR_2)
             {
                 //selfAnimator.SetBool("SpeakingActor1", false);
                 //selfAnimator.SetBool("SpeakingActor2", true);
+                dialogUIActor1.dialogBox.color = Color.white;
+                dialogUIActor2.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
+
+
+                dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+                dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+                dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
+                dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
+
                 dialogUI = dialogUIActor2;
             }
             else if (!(speaker == "" && dialog == ""))
@@ -149,7 +167,6 @@ public class ConversationController : MonoBehaviour {
             else
                 waitForAdvance = false;
 
-            yield return new WaitForSeconds(0.25f);
             //Replace this with things in the control set
             while (waitForAdvance)
             {

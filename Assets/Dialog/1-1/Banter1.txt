@@ -1,8 +1,8 @@
-Kali: I know its been a bit since your last hack, so I'll be guiding you through the basics as we get through this login portal
+Kali: I know its been a bit since your last hack, so I'll go over the basics
 
 Circe: Kali please, I don't need any handholding
 
-Kali: Oh... But I already started the tutorial module.
+Kali: Oh... But I already started the tutorial module
 
 [Tutorial starts] 
 
@@ -14,18 +14,22 @@ Circe: While that happens, let me vent for a bit
 
 Circe: You know that project that my team has been working on?
 
-Kali: You mean the digital assistant that responds to voice on the front page of our website
+Kali: You mean website's digital assistant?
 
 Kali: That sounded really interesting!
 
-Circe: It does, until you realize that clicking one of the nearby hyperlinks is faster than trying to talk to a bot
+Circe: It does
 
-Circe: Anyways, the some idiot decided it was time to upgrade the voice recognition library
+Circe: Then you realize that talking to a bot is too much effort
 
-Circe: And of course, I was the one stuck tracking all of the compatibility errors that popped up in the aftermath
+Circe: Anyways, the some idiot decided to upgrade the voice recognition library
 
-Circe: The upgrade doesn't even add any features that we'd use! It's all superflous things like social media integration
+Circe: And of course, I was the one stuck fixing all of the compatibility errors
+
+Circe: We don't even use anything from the upgrade!
+
+Circe: It's all junk like social media features
 
 Kali: Shouldn't you be having this discussion with the rest of your team?
 
-Circe: Dammit Kali... you know me in real life, I can't actually do that.
+Circe: Dammit Kali... you know me in real life, I can't actually do that

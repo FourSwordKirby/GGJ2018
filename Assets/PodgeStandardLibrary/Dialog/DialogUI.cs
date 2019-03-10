@@ -7,7 +7,7 @@ using System;
 public class DialogUI : MonoBehaviour
 {
     public Text dialogField;
-    public Text speaker;
+    public Text speakerField;
     public Image dialogBox;
     public Image speakerBox;
 
@@ -28,7 +28,7 @@ public class DialogUI : MonoBehaviour
     void Awake()
     {
         dialogField.text = "";
-        speaker.text = "";
+        speakerField.text = "";
         dialogCompleted = false;
     }
 
@@ -85,7 +85,7 @@ public class DialogUI : MonoBehaviour
         dialogCompleted = false;
 
         this.gameObject.SetActive(true);
-        this.speaker.text = speaker;
+        this.speakerField.text = speaker;
         this.dialog = dialog;
         this.dialogTracker = 0;
 
@@ -117,8 +117,6 @@ public class DialogUI : MonoBehaviour
 
     public void Close()
     {
-
-
         this.gameObject.SetActive(false);
         //this.dialog = "";
         this.dialogTracker = 0;

@@ -10,6 +10,9 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
     public GameObject model;
     public GameObject selfCollider;
 
+    public Material dissolveMaterial;
+    public MeshRenderer meshRenderer;
+
     private bool destroyed;
 
     public override void OnHit(float damage)
@@ -38,8 +41,23 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
     public void Die()
     {
         destroyed = true;
-        model.SetActive(false);
         selfCollider.SetActive(false);
+        StartCoroutine(DissolveAnim());
+    }
+
+    private IEnumerator DissolveAnim()
+    {
+        float dissolveTime = 0.7f;
+        float animTimer = dissolveTime;
+        meshRenderer.material = dissolveMaterial;
+        while (animTimer > 0)
+        {
+            animTimer -= Time.deltaTime;
+            meshRenderer.material.SetFloat("_DissolveIntensity", 1.0f - (animTimer / dissolveTime));
+            yield return null;
+        }
+        model.SetActive(false);
+        yield return null;
     }
 
     public override bool IsCompleted()
