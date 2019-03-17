@@ -112,5 +112,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfRenderer: {fileID: 23107872835741422}
   selfbody: {fileID: 54969745910542806}
-  trackingSpeed: 15
+  trackingSpeed: 18
   chargeValue: 1

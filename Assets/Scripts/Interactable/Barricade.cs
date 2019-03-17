@@ -8,8 +8,10 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
     public int hackingProgress;
 
     public GameObject model;
-    public GameObject selfCollider;
+    public GameObject selfHurtbox;
+    public Collider ECB;
 
+    public Material baseMaterial;
     public Material dissolveMaterial;
     public MeshRenderer meshRenderer;
 
@@ -17,7 +19,7 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
 
     public override void OnHit(float damage)
     {
-        hackingProgress++;
+        hackingProgress += (int)damage;
 
         if (hackingProgress >= hackingThreshold)
         {
@@ -34,14 +36,34 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
     public void Spawn()
     {
         model.SetActive(true);
-        selfCollider.SetActive(true);
+        selfHurtbox.SetActive(true);
         destroyed = false;
+        StartCoroutine(MaterializeAnim());
+    }
+
+    private IEnumerator MaterializeAnim()
+    {
+        float dissolveTime = 0.5f;
+        float animTimer = dissolveTime;
+        meshRenderer.material = dissolveMaterial;
+        while (animTimer > 0)
+        {
+            animTimer -= Time.deltaTime;
+            meshRenderer.material.SetFloat("_DissolveIntensity", (animTimer / dissolveTime));
+            yield return null;
+        }
+
+        meshRenderer.material = baseMaterial;
+        yield return null;
     }
 
     public void Die()
     {
+        SfxController.instance.PlaySound("Barricade Die");
+
         destroyed = true;
-        selfCollider.SetActive(false);
+        selfHurtbox.SetActive(false);
+        ECB.enabled = false;
         StartCoroutine(DissolveAnim());
     }
 

@@ -30,7 +30,7 @@ public class Bomb : MonoBehaviour
         {
             blastBase.transform.localScale += Vector3.one * explosionRate * Time.deltaTime;
 
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return null;
         }
         Destroy(this.gameObject);
         yield return null;

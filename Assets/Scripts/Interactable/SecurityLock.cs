@@ -75,7 +75,6 @@ public class SecurityLock : ShmupEntity
 
     public override void Suspend()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Unsuspend()

@@ -58,18 +58,13 @@ public class ShmupEnemyHealthBar : MonoBehaviour
             currentHealth = Mathf.MoveTowards(currentHealth, targetHealthValue, maxHealth * Time.deltaTime);
         }
 
-        if (currentHealth > targetHealthValue)
-        {
-            redHealthBar.alphaCutoff = currentHealth / maxHealth;
-            healthBar.alphaCutoff = targetHealthValue / maxHealth;
-        }
-        else
-        {
-            redHealthBar.alphaCutoff = targetHealthValue / maxHealth;
-            healthBar.alphaCutoff = currentHealth / maxHealth;
-        }
+        redHealthBar.alphaCutoff = 1 -  Mathf.Max(currentHealth / maxHealth, targetHealthValue / maxHealth);
+        healthBar.alphaCutoff = 1- targetHealthValue / maxHealth;
 
-        redHealthBar.alphaCutoff = 1 - redHealthBar.alphaCutoff;
-        healthBar.alphaCutoff = 1 - healthBar.alphaCutoff;
+        if(this.redHealthBar.alphaCutoff == 1)
+        {
+            redHealthSprite.enabled = false;
+            healthSprite.enabled = false;
+        }
     }
 }

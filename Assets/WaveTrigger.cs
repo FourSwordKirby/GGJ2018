@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WaveTrigger : ShmupEntity, ShmupSpawnable
@@ -11,6 +12,8 @@ public class WaveTrigger : ShmupEntity, ShmupSpawnable
 
     public MeshRenderer selfRenderer;
     public Collider selfCollider;
+
+    public GameObject LightEffect;
 
     private bool triggerEnabled;
     private bool triggerActivated;
@@ -29,7 +32,6 @@ public class WaveTrigger : ShmupEntity, ShmupSpawnable
     public void Die()
     {
         this.gameObject.SetActive(false);
-        triggerEnabled = false;
     }
 
     public override bool IsCompleted()
@@ -49,16 +51,49 @@ public class WaveTrigger : ShmupEntity, ShmupSpawnable
 
     public void Enable()
     {
-        if (this.selfRenderer.material != onMaterial)
+        if (!triggerEnabled)
         {
+            print(this.gameObject.transform.parent);
             this.selfRenderer.material = onMaterial;
             selfCollider.enabled = true;
             triggerEnabled = true;
+            StartCoroutine(TriggerActiveAnimation());
         }
+    }
+
+    public IEnumerator TriggerActiveAnimation()
+    {
+        float animTimer = 0.0f;
+        while (animTimer < 0.6f)
+        {
+            animTimer += Time.deltaTime;
+            float yScale = Mathf.Lerp(5.0f, 0.5f, animTimer / 0.6f);
+            LightEffect.transform.localScale = new Vector3(LightEffect.transform.localScale.x, yScale, LightEffect.transform.localScale.z);
+            yield return null;
+        }
+        LightEffect.GetComponentsInChildren<MeshCollider>().ToList().ForEach(x => x.enabled = false);
+
+        yield return null;
     }
 
     public void Spawn()
     {
+        print("called Trigger spawn");
+        StartCoroutine(SpawnAnimation());
+    }
+
+    public IEnumerator SpawnAnimation()
+    {
+        float animTimer = 0.0f;
+        while (animTimer < 0.6f)
+        {
+            animTimer += Time.deltaTime;
+            float yScale = Mathf.Lerp(0.5f, 5.0f, animTimer / 0.6f);
+            LightEffect.transform.localScale = new Vector3(LightEffect.transform.localScale.x, yScale, LightEffect.transform.localScale.z);
+            yield return null;
+        }
+
+        yield return null;
     }
 
     public override void Suspend()

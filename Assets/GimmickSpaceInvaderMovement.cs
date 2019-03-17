@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GimmickSpaceInvaderMovement : MonoBehaviour {
+public class GimmickSpaceInvaderMovement : ShmupEntity {
 
     public float HorizontalInterval;
     public float VerticalInterval;
@@ -10,10 +10,35 @@ public class GimmickSpaceInvaderMovement : MonoBehaviour {
     float horizontalTimer;
     float verticalTimer;
 
+    float vert_Limit = 0;
+
     bool moveLeft;
 
-	// Update is called once per frame
-	void Update () {
+    public override bool IsCompleted()
+    {
+        return true;
+    }
+
+    public override void OnHit(float damage)
+    {
+    }
+
+    public override void OnStun()
+    {
+    }
+
+    public override void Suspend()
+    {
+        this.enabled = false;
+    }
+
+    public override void Unsuspend()
+    {
+        this.enabled = true;
+    }
+
+    // Update is called once per frame
+    void Update () {
         horizontalTimer += Time.deltaTime;
         verticalTimer += Time.deltaTime;
         if(horizontalTimer > HorizontalInterval)
@@ -28,7 +53,8 @@ public class GimmickSpaceInvaderMovement : MonoBehaviour {
         if(verticalTimer > VerticalInterval)
         {
             moveLeft = !moveLeft;
-            this.transform.position += Vector3.back * 2;
+            if(this.transform.position.z - 2 > vert_Limit)
+                this.transform.position -= Vector3.forward * 2;
             verticalTimer = 0;
         }
 	}

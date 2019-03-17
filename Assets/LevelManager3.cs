@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager3 : ShmupLevel {
-    public bool PlayOpeningCutscene;
-    public TextAsset openingCutscene;
+    public bool PlayOpeningBanter;
+    public TextAsset openingBanter;
+    public TextAsset lockBanter;
+    public TextAsset closingBanter;
 
     public SecurityLock FloorOne_GuardedLock;
     public Encounter FloorOne_GuardedLockEncounter;
@@ -66,23 +68,42 @@ public class LevelManager3 : ShmupLevel {
             yield return null;
         }
 
-        if (PlayOpeningCutscene)
+        if (PlayOpeningBanter)
         {
-            //TextAsset dialog = ProgressManager.instance.GetStartDialog();
-            StartCoroutine(ShmupGameManager.instance.PlayCutscene(openingCutscene, true));
+            List<string> dialogEntries = DialogEngine.CreateDialogComponents(openingBanter.text);
+            ShmupGameManager.instance.PauseGameplay();
+            ConversationController.instance.StartConversation(dialogEntries);
             yield return null;
+
+            while (ShmupGameManager.instance.Paused)
+                yield return null;
         }
 
-        if (!PlayOpeningCutscene)
-        {
-            ShmupGameManager.instance.ResumeGameplay();
-        }
         ShmupGameManager.instance.player.gameObject.SetActive(true);
         ShmupGameManager.instance.RespawnPlayer();
+        ShmupGameManager.instance.ResumeGameplay();
+
+        yield return new WaitForSeconds(2.0f);
+
+        List<string> lockEntries = DialogEngine.CreateDialogComponents(lockBanter.text);
+        ConversationController.instance.StartConversation(lockEntries);
+        yield return null;
+
+        while (ShmupGameManager.instance.Paused)
+            yield return null;
+
     }
 
     IEnumerator EndSequence()
     {
+        List<string> dialogEntries = DialogEngine.CreateDialogComponents(closingBanter.text);
+        ShmupGameManager.instance.PauseGameplay();
+        ConversationController.instance.StartConversation(dialogEntries);
+        yield return null;
+
+        while (ShmupGameManager.instance.Paused)
+            yield return null;
+
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())
         {

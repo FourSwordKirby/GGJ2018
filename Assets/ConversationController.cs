@@ -54,6 +54,15 @@ public class ConversationController : MonoBehaviour {
         bool waitForAdvance;
         float autoAdvanceTimer = 0.0f;
 
+        //Initializing all of the colors
+        dialogUIActor1.dialogBox.color = Color.white;
+        dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+        dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+
+        dialogUIActor2.dialogBox.color = Color.white;
+        dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+        dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+
         selfAnimator.SetTrigger("OpenDialog");
         yield return new WaitForSeconds(1.4f); //Used to offset the dialog bar appearance time
 
@@ -102,12 +111,12 @@ public class ConversationController : MonoBehaviour {
                         focus.SetActive(false);
                     }
                 }
-                if (instruction.Contains("Resume Game"))
+                if (instruction.Contains("Resume Gameplay"))
                 {
                     print("Resuming Game");
                     ShmupGameManager.instance.ResumeGameplay();
                 }
-                else if (instruction.Contains("PauseGame"))
+                else if (instruction.Contains("Pause Game"))
                 {
                     print("Pausing Game");
                     ShmupGameManager.instance.PauseGameplay();
@@ -121,13 +130,12 @@ public class ConversationController : MonoBehaviour {
                 //selfAnimator.SetBool("SpeakingActor1", true);
                 //selfAnimator.SetBool("SpeakingActor2", false);
                 dialogUIActor1.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
-                dialogUIActor2.dialogBox.color = Color.white;
-
                 dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
                 dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
+
+                dialogUIActor2.dialogBox.color = Color.white;
                 dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
                 dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
-
 
                 dialogUI = dialogUIActor1;
             }
@@ -136,11 +144,10 @@ public class ConversationController : MonoBehaviour {
                 //selfAnimator.SetBool("SpeakingActor1", false);
                 //selfAnimator.SetBool("SpeakingActor2", true);
                 dialogUIActor1.dialogBox.color = Color.white;
-                dialogUIActor2.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
-
-
                 dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
                 dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+
+                dialogUIActor2.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
                 dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
                 dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
 
@@ -179,6 +186,15 @@ public class ConversationController : MonoBehaviour {
                 yield return null;
             }
         }
+
+        //Resetting all of the colors
+        dialogUIActor1.dialogBox.color = Color.white;
+        dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+        dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+
+        dialogUIActor2.dialogBox.color = Color.white;
+        dialogUIActor2.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
+        dialogUIActor2.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
 
         selfAnimator.SetTrigger("CloseDialog");
         conversationFinished = true;

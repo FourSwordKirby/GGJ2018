@@ -65,7 +65,6 @@ public class Barrier : ShmupEntity
 
     public override void Suspend()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Unsuspend()

@@ -1,0 +1,39 @@
+[Show Letterbox] 
+
+[Show 1, Show 2] 
+
+Circe: Wait, there's nothing here??
+
+Kali: Hold on Circe, I'm picking up something
+
+Kali: It's...
+
+Kali: THE CREDITS?
+
+Circe: Wait, what do you mean its the credits?
+
+Circe: We definitely targeted the right server..
+
+Kali: Unfortunately, it looks like this was just a prototype project
+
+Kali: (disappointed) It took them a whole year to make this...
+
+Kali: Talk about a let down
+
+Circe: Well, Rome wasn't built in a day Kali
+
+Kali: Is this really on the scale of Rome...
+
+Circe: To be honest, no
+
+Circe: But... It wasn't a total waste!
+
+Circe: I'm sure the next cache we hit will have some juicy secrets at the end!
+
+Kali: I guess you're right Circe. Not every lead can be a game-winner after all
+
+Kali: See you tomorrow then?
+
+Circe: Yep, tomorrow!
+
+[Hide Letterbox, Hide 1, Hide 2]

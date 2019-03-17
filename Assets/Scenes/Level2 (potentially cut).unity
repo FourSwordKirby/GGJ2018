@@ -7095,7 +7095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogField: {fileID: 1321261703}
-  speaker: {fileID: 1321261703}
+  speakerField: {fileID: 0}
   dialogBox: {fileID: 57280257}
   speakerBox: {fileID: 57280257}
   dialogCompleted: 0
@@ -14143,7 +14143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogField: {fileID: 1298177145}
-  speaker: {fileID: 1621873855}
+  speakerField: {fileID: 0}
   dialogBox: {fileID: 1326669880}
   speakerBox: {fileID: 277061368}
   dialogCompleted: 1
@@ -14604,7 +14604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogField: {fileID: 227537532}
-  speaker: {fileID: 1070046695}
+  speakerField: {fileID: 0}
   dialogBox: {fileID: 868208972}
   speakerBox: {fileID: 792956221}
   dialogCompleted: 1
@@ -14981,7 +14981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogField: {fileID: 1817136582}
-  speaker: {fileID: 1817136582}
+  speakerField: {fileID: 0}
   dialogBox: {fileID: 723640671}
   speakerBox: {fileID: 723640671}
   dialogCompleted: 0
@@ -17995,10 +17995,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 647104090}
-  - {fileID: 612514154}
-  - {fileID: 314364969}
-  - {fileID: 70581918}
-  - {fileID: 1420984062}
 --- !u!1001 &1956409586
 Prefab:
   m_ObjectHideFlags: 0

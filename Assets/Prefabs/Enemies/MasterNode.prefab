@@ -724,7 +724,7 @@ MonoBehaviour:
   bulletSpeed: 0
   bulletStreams: 0
   bulletSpread: 0
-  movementMode: 0
+  movementMode: 3
   firingMode: 0
   target: {fileID: 0}
   rateOfFire: 0

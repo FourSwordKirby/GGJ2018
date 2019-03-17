@@ -28,6 +28,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1636206988830428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4134697369963444}
+  m_Layer: 15
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1726692864141908
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,9 +68,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4746872727827108}
   - component: {fileID: 33633764720122376}
-  - component: {fileID: 65294031132097286}
   - component: {fileID: 23324681698796636}
-  m_Layer: 15
+  - component: {fileID: 65499175349685926}
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,6 +92,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4134697369963444
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636206988830428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4496415038027428}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4419664995732008
 Transform:
   m_ObjectHideFlags: 1
@@ -98,11 +126,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726692864141908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.049999952, y: 0, z: 39.05}
+  m_LocalPosition: {x: -10.120005, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4419664995732008}
   - {fileID: 4830508057026526}
+  - {fileID: 4134697369963444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -185,7 +214,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65294031132097286
+--- !u!65 &65499175349685926
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -226,6 +255,8 @@ MonoBehaviour:
   hackingThreshold: 1
   hackingProgress: 0
   model: {fileID: 1987735498163446}
-  selfCollider: {fileID: 1543428046841842}
+  selfHurtbox: {fileID: 1543428046841842}
+  ECB: {fileID: 65499175349685926}
+  baseMaterial: {fileID: 2100000, guid: 135786d74f6e4814abb8cbd00d8aa1f2, type: 2}
   dissolveMaterial: {fileID: 2100000, guid: c4822642162eec948adec6dc5af9ac2b, type: 2}
   meshRenderer: {fileID: 23324681698796636}

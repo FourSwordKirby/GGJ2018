@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public BGMController bgm;
+    public BgmController bgm;
     public AudioClip normalOst;
     public AudioClip arcadeOst;
     public AudioClip forestOst;

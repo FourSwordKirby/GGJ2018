@@ -58,9 +58,10 @@ public class BombField : MonoBehaviour {
                 this.transform.localScale += Vector3.up;
                 if(!StunHitbox.activeSelf)
                 {
+                    SfxController.instance.PlaySound("Bomb Activate");
+
                     CameraControlsTopDown3D.instance.Shake(0.4f, 0.5f);
                     StunHitbox.SetActive(true);
-
                 }
             }
             else if (timer > expansionDuration * 1.5f)

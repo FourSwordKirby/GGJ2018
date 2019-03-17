@@ -164,6 +164,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
 
     public override void OnHit(float damage)
     {
+        SfxController.instance.PlaySound("Bullet Hit Enemy", this.gameObject);
+
         //this.gameObject.SetActive(false);
         this.health -= damage;
         if (this.health <= 0)

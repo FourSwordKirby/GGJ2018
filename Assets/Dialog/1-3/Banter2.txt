@@ -1,10 +1,12 @@
-Kali: It looks like you'll more than just firepower to get past those firewalls
+Kali: It looks like you'll more than just firepower to get past those barriers
 
 Kali: Disable the key generators that they're linked to and take it down
 
-Circe: Why wasn't this covered during that tutorial you had prepared for more
+Circe: Why wasn't this covered during your tutorial
 
-Kali: Uh well... it was getting late, and if I stay up too late I get hungry and end up snacking
+Kali: Uh well... it was getting late
+
+Kali: and if I stay up too late I get hungry and end up snacking...
 
 Circe: Whats wrong with snacking
 
@@ -12,6 +14,8 @@ Kali: Eating is a losing game
 
 Kali: (Dramatic) Each meal costs money, and more calories means more weight
 
-Kali: (Looking frustrated) Which means more time working that weight off in the future, and you know time is money so...
+Kali: (Looking frustrated) Which means you need to work out later to compensate, 
+
+Kali: And you know time is money so...
 
 Circe: Sounds difficult
