@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: '[Pan Focus] Defeat enemies to unlock the <Register>'
+  tutorialText: '[Pan Focus] Defeat enemies to unlock the <i>Register</i>'
   tutorialType: 4
   associatedWave: {fileID: 578910685}
 --- !u!1001 &241514628
@@ -2880,7 +2880,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4734523943645762, guid: 7b0bf457d56175440a4e36848bd34b10, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114436312582965550, guid: 7b0bf457d56175440a4e36848bd34b10,
         type: 2}
@@ -3100,6 +3100,7 @@ MonoBehaviour:
   PlayClosingBanter: 1
   openingBanter: {fileID: 4900000, guid: 676c831ec721d694c8c00f9caeb3d61b, type: 3}
   closingBanter: {fileID: 4900000, guid: b940669fd0233014db3ed1f66223dd7f, type: 3}
+  levelBgm: {fileID: 8300000, guid: 05a7bab79b9ec68469e90fd2a791f35e, type: 3}
   TutorialEncounter: {fileID: 1846544695}
 --- !u!4 &544040696
 Transform:
@@ -3790,8 +3791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: '[Pause] Use a <Cache Bomb> with the L1 button (X key) to stun enemies
-    and nullify bullets '
+  tutorialText: '[Pause] Use a <i>Cache Bomb</i> with the L1 Button (X Key) to stun
+    enemies and nullify bullets'
   tutorialType: 6
   associatedWave: {fileID: 2137520824}
 --- !u!1001 &672114077
@@ -5058,7 +5059,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 9cbedfcc947782941a0c7f9e1a392bc7, type: 3}
     m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
@@ -6068,17 +6069,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4758332881656774, guid: 115e5a65e15021141811477598793898, type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114404605891286962, guid: 115e5a65e15021141811477598793898,
-        type: 2}
-      propertyPath: m_Text
-      value: Phase 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114528451043813976, guid: 115e5a65e15021141811477598793898,
-        type: 2}
-      propertyPath: m_Text
-      value: Approach
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1596345549853474, guid: 115e5a65e15021141811477598793898, type: 2}
       propertyPath: m_IsActive
@@ -6094,6 +6085,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1457062886}
     m_Modifications:
+    - target: {fileID: 114423309696622476, guid: 67567838006aa1a4cbd9cbff99b21587,
+        type: 2}
+      propertyPath: adjacentPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4316426375372968, guid: 67567838006aa1a4cbd9cbff99b21587, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6824,7 +6820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: ' Shoot using the R1 button (Space bar)'
+  tutorialText: ' Shoot using the R1 button (Space Bar)'
   tutorialType: 1
   associatedWave: {fileID: 1250334897}
 --- !u!1001 &1156390141
@@ -9276,7 +9272,7 @@ Transform:
   m_Children:
   - {fileID: 850531470}
   m_Father: {fileID: 1919336283}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1573831940
 MonoBehaviour:
@@ -9467,7 +9463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: ' Move to the <Register> to continue'
+  tutorialText: ' Move to the <i>Register</i> to continue'
   tutorialType: 2
   associatedWave: {fileID: 1250334897}
 --- !u!1 &1606484543
@@ -9679,12 +9675,61 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4566244259586658, guid: 8416f9ed15ac80e46a0d4696e8164976, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1218537851902236, guid: 8416f9ed15ac80e46a0d4696e8164976, type: 2}
       propertyPath: m_Name
       value: DialogComponents
       objectReference: {fileID: 0}
+    - target: {fileID: 1498604730121940, guid: 8416f9ed15ac80e46a0d4696e8164976, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224973834707997108, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224063212845441152, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224472125623405288, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224140325001895010, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224518041862242202, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224560970760593626, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224568782372392856, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114561742635547584, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: f7b487e50b1eb174fbd41cb7cd5bf415, type: 2}
+    - target: {fileID: 114568053446005096, guid: 8416f9ed15ac80e46a0d4696e8164976,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: f7b487e50b1eb174fbd41cb7cd5bf415, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8416f9ed15ac80e46a0d4696e8164976, type: 2}
   m_IsPrefabParent: 0
@@ -9835,6 +9880,97 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659255094}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1661176526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1720986201811534, guid: 115e5a65e15021141811477598793898,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1661176527}
+  - component: {fileID: 1661176530}
+  - component: {fileID: 1661176529}
+  - component: {fileID: 1661176528}
+  m_Layer: 5
+  m_Name: Dialog Instruction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1661176527
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224119498718833426, guid: 115e5a65e15021141811477598793898,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661176526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1919336283}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3.0999756, y: -299.9}
+  m_SizeDelta: {x: 229.5, y: 120.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1661176528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661176526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922431ea5ec124e4291c57974970abd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 30
+--- !u!114 &1661176529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114528451043813976, guid: 115e5a65e15021141811477598793898,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661176526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9cbedfcc947782941a0c7f9e1a392bc7, type: 3}
+    m_FontSize: 29
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 95
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Advance Dialog with the X Button (Z Key)
+--- !u!222 &1661176530
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222449706695766714, guid: 115e5a65e15021141811477598793898,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661176526}
 --- !u!1001 &1661446521
 Prefab:
   m_ObjectHideFlags: 0
@@ -9989,7 +10125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: '[Pan Focus] Use the Ethernet port to move to new locations'
+  tutorialText: '[Pan Focus] Use the <i>Ethernet Port</i> to move to new locations'
   tutorialType: 7
   associatedWave: {fileID: 1457062887}
 --- !u!1001 &1695226700
@@ -11053,6 +11189,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
+  - {fileID: 1250334897}
+  - {fileID: 183384685}
+  - {fileID: 578910685}
+  - {fileID: 1606484545}
+  - {fileID: 1936748967}
+  - {fileID: 2137520824}
   - {fileID: 1457062887}
 --- !u!4 &1846544696
 Transform:
@@ -11357,7 +11499,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 286274684}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -11378,6 +11520,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1661176527}
   - {fileID: 1573831938}
   - {fileID: 2140546970}
   - {fileID: 2063319759}
@@ -11430,7 +11573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c330d448bfaff438b2716ba5b4161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialText: '[Pan Focus] Collect <Enemy Certificates> to access <Cache Bombs>'
+  tutorialText: '[Pan Focus] Collect <i>Enemy Certificates</i> to access <i>Cache
+    Bombs</i>'
   tutorialType: 5
   associatedWave: {fileID: 1606484545}
 --- !u!1 &1936748965

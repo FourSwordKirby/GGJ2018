@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager2 : ShmupLevel {
     public bool PlayOpeningCutscene;
     public TextAsset openingCutscene;
+    public AudioClip levelBgm;
 
     public Encounter mainEncounter;
 
@@ -36,6 +37,8 @@ public class LevelManager2 : ShmupLevel {
         {
             yield return null;
         }
+        
+        BgmController.instance.PlayBGM(levelBgm);
 
         if (PlayOpeningCutscene)
         {
@@ -54,6 +57,8 @@ public class LevelManager2 : ShmupLevel {
 
     IEnumerator EndSequence()
     {
+        BgmController.instance.StopBGM();
+
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())
         {

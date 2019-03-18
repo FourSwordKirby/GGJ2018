@@ -9,7 +9,7 @@ public class LevelManager1 : ShmupLevel {
     public TextAsset openingBanter;
     public TextAsset spaceInvaderBanter;
     public TextAsset closingBanter;
-
+    public AudioClip levelBgm;
 
     public Encounter mainEncounter;
     public Wave spaceInvaderWave;
@@ -44,6 +44,8 @@ public class LevelManager1 : ShmupLevel {
             {
                 yield return null;
             }
+
+            BgmController.instance.PlayBGM(levelBgm);
 
             List<string> dialogEntries = DialogEngine.CreateDialogComponents(openingBanter.text);
             ShmupGameManager.instance.PauseGameplay();
@@ -80,6 +82,8 @@ public class LevelManager1 : ShmupLevel {
 
         while (ShmupGameManager.instance.Paused)
             yield return null;
+        
+        BgmController.instance.StopBGM();
 
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())

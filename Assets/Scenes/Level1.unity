@@ -6120,6 +6120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 663612633}
+  - {fileID: 511260685}
+  - {fileID: 1994742073}
+  - {fileID: 135863681}
+  - {fileID: 276931100}
 --- !u!1001 &414749180
 Prefab:
   m_ObjectHideFlags: 0
@@ -8399,6 +8403,7 @@ MonoBehaviour:
   openingBanter: {fileID: 4900000, guid: fd065b6658c8fa14ab5d94c99822afca, type: 3}
   spaceInvaderBanter: {fileID: 4900000, guid: cdcae85279fbdf946a0cf3395556d4e0, type: 3}
   closingBanter: {fileID: 4900000, guid: 0b655e17dd9584a4abc9337f3e765f49, type: 3}
+  levelBgm: {fileID: 8300000, guid: 05a7bab79b9ec68469e90fd2a791f35e, type: 3}
   mainEncounter: {fileID: 413807056}
   spaceInvaderWave: {fileID: 276931100}
 --- !u!4 &561778376 stripped

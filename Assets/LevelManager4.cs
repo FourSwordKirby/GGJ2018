@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager4 : ShmupLevel {
     public bool PlayOpeningCutscene;
     public TextAsset openingCutscene;
+    public AudioClip levelBgm;
 
     public Encounter mainEncounter;
 

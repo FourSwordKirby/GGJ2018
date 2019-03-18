@@ -235,7 +235,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1183686242755920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 22.635088}
+  m_LocalPosition: {x: 25.42, y: 0.27999878, z: 28.28}
   m_LocalScale: {x: 2.33986, y: 2.33985, z: 2.33985}
   m_Children:
   - {fileID: 4570268785500696}
@@ -403,11 +403,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eefb7cface83264ea39308b1d291cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjacentPoints:
-  - {fileID: 0}
+  adjacentPoints: []
   isEndpoint: 1
-  connectionMaterial: {fileID: 2100000, guid: 432dbc1c8254da44a8e85e520d176cf0, type: 2}
-  deviceConnectionMaterial: {fileID: 2100000, guid: 80d51d544a6648446810bea07940833c,
+  connectionMaterial: {fileID: 2100000, guid: a7a655d8f3a92c543b66e5e66db76a58, type: 2}
+  deviceConnectionMaterial: {fileID: 2100000, guid: 2b8c460fefe6b1f44be07dc9ba5eb779,
     type: 2}
   associatedDevices:
   - {fileID: 1183686242755920}

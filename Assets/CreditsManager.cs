@@ -7,16 +7,17 @@ public class CreditsManager : ShmupLevel {
 
     public bool PlayOpeningCutscene;
     public TextAsset openingCutscene;
+    public float CreditsDelay;
+    public AudioClip creditsBgm;
+
+    public List<GameObject> CreditObjects;
 
     public override void StartLevel()
     {
-        StartCoroutine(IntroSequence());
+        StartCoroutine(CreditsSequence());
     }
 
     bool endingLevel;
-
-    private float CreditsDuration = 4.0f;
-
     public override void EndLevel()
     {
         if (!endingLevel)
@@ -25,13 +26,12 @@ public class CreditsManager : ShmupLevel {
             StartCoroutine(EndSequence());
         }
     }
-
     public override bool IsFinished()
     {
         throw new System.NotImplementedException();
     }
 
-    IEnumerator IntroSequence()
+    IEnumerator CreditsSequence()
     {
         if (PlayOpeningCutscene)
         {
@@ -40,28 +40,40 @@ public class CreditsManager : ShmupLevel {
             {
                 yield return null;
             }
-
-            //TextAsset dialog = ProgressManager.instance.GetStartDialog();
-            StartCoroutine(ShmupGameManager.instance.PlayCutscene(openingCutscene, true));
+            
+            StartCoroutine(ShmupGameManager.instance.PlayCutscene(openingCutscene, true, 6.0f));
             yield return null;
+
+            while (ShmupGameManager.instance.Paused)
+                yield return null;
         }
 
         ShmupGameManager.instance.player.gameObject.SetActive(true);
         ShmupGameManager.instance.RespawnPlayer();
-        ShmupGameManager.instance.ResumeGameplay();
+        BgmController.instance.PlayBGM(creditsBgm);
 
-        yield return new WaitForSeconds(CreditsDuration);
+        int currentCreditsIndex = 0;
+        while(currentCreditsIndex < CreditObjects.Count)
+        {
+            CreditObjects[currentCreditsIndex].SetActive(true);
+            while (CreditObjects[currentCreditsIndex].transform.childCount > 0)
+                yield return null;
+            currentCreditsIndex += 1;
+        }
+
         EndLevel();
     }
 
     IEnumerator EndSequence()
     {
+        BgmController.instance.StopBGM();
+
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())
         {
             yield return null;
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         yield return null;
     }
 }

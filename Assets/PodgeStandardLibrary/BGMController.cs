@@ -16,8 +16,27 @@ public class BgmController : MonoBehaviour {
             Destroy(this.gameObject);
     }
 
+    public void PlayBGM(AudioClip bgm, float volume = 1.0f, bool fadeIn = true)
+    {
+        if (audioSrc.clip != bgm)
+            audioSrc.clip = bgm;
+
+        if (fadeIn)
+        {
+            audioSrc.volume = 0.0f;
+            StartCoroutine(FadeTowards(volume));
+        }
+
+        audioSrc.Play();
+    }
+
+    public void StopBGM()
+    {
+        StartCoroutine(FadeTowards(0.0f));
+    }
+
     // Update is called once per frame
-    public IEnumerator FadeTowards (float targetVolume, float duration=1.0f) {
+    public IEnumerator FadeTowards (float targetVolume, float duration=3.0f) {
         float timer = 0.0f;
 
         float startingVolume = audioSrc.volume;

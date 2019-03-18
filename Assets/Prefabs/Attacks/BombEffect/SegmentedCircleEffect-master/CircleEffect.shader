@@ -3,7 +3,6 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-		_Color ("Color", Color) = (1,1,1,1)
         _NumSegments ("Segments", Int) = 1
         _NumRings ("Rings", Int) = 1
         _MinRing ("Inner Ring", Int) = 0
@@ -15,11 +14,8 @@
 	}
 	SubShader
 	{
-	
-		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
-		Blend SrcAlpha OneMinusSrcAlpha
-		ZWrite Off
-		ZTest Always
+		Tags { "RenderType"="Opaque" }
+        Blend SrcAlpha OneMinusSrcAlpha
 		LOD 100
 
 		Pass
@@ -45,7 +41,6 @@
 			};
 
 			sampler2D _MainTex;
-			float4 _Color;
 			float4 _MainTex_ST;
             float _Debug;
             float _Debug2;
@@ -113,7 +108,7 @@
 				//fixed4 col = fixed4(regionId / (_NumSegments * _NumRings), 0, 0, 1);
 				//return col;
 
-				return fixed4(_Color.r, _Color.g, _Color.b, 0.5*(snoise(region.xy + _Time.x * 10) + 1));
+                return fixed4(1, 1, 1, snoise(region.xy + _Time.x * 10) + 0.8f);
 			}
 			
             ENDCG

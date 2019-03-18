@@ -22,14 +22,6 @@ public class ChapterHud : MonoBehaviour {
             Destroy(this.gameObject);
     }
 
-    private void Start()
-    {
-        framing.SetActive(false);
-        chapterTitle.gameObject.SetActive(false);
-        chapterSubtitle.gameObject.SetActive(false);
-        loadingBar.gameObject.SetActive(false);
-    }
-
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.Q))

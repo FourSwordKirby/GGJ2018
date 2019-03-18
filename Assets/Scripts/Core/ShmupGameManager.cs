@@ -75,12 +75,12 @@ public class ShmupGameManager : MonoBehaviour {
 
 
 
-    public IEnumerator PlayCutscene(TextAsset dialog, bool withPortraits)
+    public IEnumerator PlayCutscene(TextAsset dialog, bool withPortraits, float autoPlay = 0.0f)
     {
         CutscenePause();
         
         List<string> dialogEntries = DialogEngine.CreateDialogComponents(dialog.text);
-        CutsceneDialogController.instance.StartCutscene(dialogEntries);
+        CutsceneDialogController.instance.StartCutscene(dialogEntries, autoPlay);
 
         while (!CutsceneDialogController.instance.IsCutsceneFinished())
             yield return null;

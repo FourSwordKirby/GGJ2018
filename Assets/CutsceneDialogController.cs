@@ -62,10 +62,10 @@ public class CutsceneDialogController : MonoBehaviour
     }
 
 
-    public void StartCutscene(List<string> dialog)
+    public void StartCutscene(List<string> dialog, float autoPlay = 0.0f)
     {
         cutsceneFinished = false;
-        StartCoroutine(PlayCutscene(dialog));
+        StartCoroutine(PlayCutscene(dialog, autoPlay));
     }
 
     public void EndCutscene()
@@ -73,7 +73,7 @@ public class CutsceneDialogController : MonoBehaviour
         cutsceneFinished = true;
     }
 
-    private IEnumerator PlayCutscene(List<string> dialogComponents)
+    private IEnumerator PlayCutscene(List<string> dialogComponents, float autoPlay = 0.0f)
     {
         string speaker = "";
         string dialog = "";
@@ -112,6 +112,12 @@ public class CutsceneDialogController : MonoBehaviour
             foreach (string rawInstruction in instructionPieces)
             {
                 string instruction = rawInstruction.Trim();
+
+                if (instruction.Contains("Resume Gameplay"))
+                {
+                    print("Resuming Game");
+                    ShmupGameManager.instance.ResumeGameplay();
+                }
 
                 if (instruction.Contains("Show"))
                 {
@@ -173,9 +179,11 @@ public class CutsceneDialogController : MonoBehaviour
 
             yield return new WaitForSeconds(0.25f);
             //Replace this with things in the control set
+            float autoAdvanceTimer = 0.0f;
             while (waitForAdvance)
             {
-                if (Controls.dialogAdvanceDown())
+                autoAdvanceTimer += Time.deltaTime;
+                if (Controls.dialogAdvanceDown() || (autoPlay > 0.0f && autoAdvanceTimer > autoPlay))
                     break;
                 yield return null;
             }

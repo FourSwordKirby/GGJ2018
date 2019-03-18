@@ -52,7 +52,6 @@ public class ConversationController : MonoBehaviour {
         string speaker = "";
         string dialog = "";
         bool waitForAdvance;
-        float autoAdvanceTimer = 0.0f;
 
         //Initializing all of the colors
         dialogUIActor1.dialogBox.color = Color.white;
@@ -174,13 +173,13 @@ public class ConversationController : MonoBehaviour {
             else
                 waitForAdvance = false;
 
+            float autoAdvanceTimer = 0.0f;
             //Replace this with things in the control set
             while (waitForAdvance)
             {
                 autoAdvanceTimer += Time.deltaTime;
                 if (Controls.dialogAdvanceDown() || autoAdvanceTimer > AUTO_DIALOG_ADVANCE_TIME)
                 {
-                    autoAdvanceTimer = 0.0f;
                     break;
                 }
                 yield return null;
