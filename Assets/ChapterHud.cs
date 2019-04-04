@@ -58,4 +58,30 @@ public class ChapterHud : MonoBehaviour {
     {
         animations.Play("ChapterEndAnimation");
     }
+
+    public void OnCameraSightFadeIn()
+    {
+        AudioManager.instance.OnCameraSightFadein();
+    }
+
+    public void OnPhaseLoadBarStart()
+    {
+        AudioManager.instance.OnPhaseLoadBarStart();
+    }
+    public void OnPhaseLoadBarStop()
+    {
+        AudioManager.instance.OnPhaseLoadBarStop();
+    }
+    public void OnPhaseNameFadein()
+    {
+        AudioManager.instance.OnPhaseNameFadein();
+    }
+    public void OnPhaseTextFadein()
+    {
+        AudioManager.instance.OnPhaseTextFadein();
+    }
+    public void OnPhaseTextFadeout()
+{
+    AudioManager.instance.OnPhaseTextFadeout();
+}
 }

@@ -79,6 +79,8 @@ public class CutsceneDialogController : MonoBehaviour
         string dialog = "";
         bool waitForAdvance;
 
+        AudioManager.instance.OnDialogueLargeFadein();
+
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string currentDialog = dialogComponents[i];
@@ -148,6 +150,8 @@ public class CutsceneDialogController : MonoBehaviour
                 selfAnimator.SetBool("SpeakingActor1", true);
                 selfAnimator.SetBool("SpeakingActor2", false);
                 dialogUI = dialogUIActor1;
+
+                AudioManager.instance.OnLeftLargeSpeak();
             }
             else if (speaker == NAME_ACTOR_2)
             {
@@ -156,6 +160,8 @@ public class CutsceneDialogController : MonoBehaviour
                 selfAnimator.SetBool("SpeakingActor1", false);
                 selfAnimator.SetBool("SpeakingActor2", true);
                 dialogUI = dialogUIActor2;
+
+                AudioManager.instance.OnRightLargeSpeak();
             }
             else if(!(speaker == "" && dialog == ""))
                 throw new Exception("This dialog is not supported" + dialogComponents[i] + "/" + speaker + "/" + dialog);
@@ -189,6 +195,7 @@ public class CutsceneDialogController : MonoBehaviour
             }
         }
 
+        AudioManager.instance.OnDialogueLargeFadeout();
         EndCutscene();
         yield return null;
     }

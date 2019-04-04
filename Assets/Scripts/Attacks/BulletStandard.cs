@@ -44,7 +44,7 @@ public class BulletStandard : Bullet
 
     public override void OnHit(float damage)
     {
-        SfxController.instance.PlaySound("Bullet Clash", this.gameObject);
+        AudioManager.instance.OnHitEnemyShot();
 
         if (!isPiercing)
         {

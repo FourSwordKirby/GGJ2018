@@ -47,6 +47,7 @@ public class EnemyBitCloud : MonoBehaviour {
         foreach(FloatingBit myBit in bits)
             myBit.TrackObject(entity);
 
+        AudioManager.instance.OnBombCollect();
         StartCoroutine(GarbageCollect());
     }
 

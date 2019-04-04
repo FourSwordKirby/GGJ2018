@@ -109,7 +109,10 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     void ShootBullet()
     {
-        SfxController.instance.PlaySound("Player Shoot");
+        if (!normalForm.activeSelf)
+            return;
+
+        AudioManager.instance.OnPlayerShoot();
 
         Bullet bullet = Instantiate(bulletPrefab).GetComponent<Bullet>();
         bullet.hitbox.isPlayerOwned = true;
@@ -126,13 +129,14 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     void UseBomb()
     {
-        SfxController.instance.PlaySound("Player Bomb");
+        AudioManager.instance.OnBomb();
 
         bombSpawner.Spawn(this.transform.position);
     }
 
     public override void OnHit(float damage)
     {
+        AudioManager.instance.OnPlayerGetsHit();
         this.health -= (int)damage;
         if (this.health <= 0)
             this.Die();
@@ -154,7 +158,7 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
         if (dying)
             yield break;
 
-        SfxController.instance.PlaySound("Player Die");
+        AudioManager.instance.OnPlayerDies();
 
         dying = true;
         //Death animation happens here
@@ -189,7 +193,7 @@ public class ShmupPlayer : ShmupEntity, ShmupSpawnable {
 
     public void Spawn(SpawnPoint spawn)
     {
-        SfxController.instance.PlaySound("Player Spawn");
+        AudioManager.instance.OnSpawn();
 
         this.gameObject.SetActive(true);
         this.normalForm.SetActive(true); //Hacky crap that should get handled elsewhere

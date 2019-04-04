@@ -378,7 +378,6 @@ MonoBehaviour:
   PlayOpeningCutscene: 1
   openingCutscene: {fileID: 4900000, guid: 5e3cdb2185079cf4a86db5a31fe2b741, type: 3}
   CreditsDelay: 0
-  creditsBgm: {fileID: 8300000, guid: 0c238cccbc492ce4aa669e697b9c034a, type: 3}
   CreditObjects:
   - {fileID: 1475250396}
   - {fileID: 303655115}
@@ -494,7 +493,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 705051043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892505978}
@@ -542,7 +541,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 708940005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892505978}

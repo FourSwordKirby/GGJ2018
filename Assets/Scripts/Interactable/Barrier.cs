@@ -21,7 +21,11 @@ public class Barrier : ShmupEntity
     // Update is called once per frame
     void Update()
     {
+        bool currentlyLocked = model.activeSelf;
         model.SetActive(!locks.All(x => x.unlocked));
+        if(currentlyLocked && !model.activeSelf)
+            AudioManager.instance.OnGateUnlock();
+
         if (cooldownTimer > 0)
             cooldownTimer -= Time.deltaTime;
     }

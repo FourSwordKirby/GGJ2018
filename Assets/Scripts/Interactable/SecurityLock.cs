@@ -46,10 +46,13 @@ public class SecurityLock : ShmupEntity
 
     public override void OnHit(float damage)
     {
+        AudioManager.instance.OnHitKey();
+
         hackingProgress++;
 
         if (hackingProgress > hackingThreshold)
         {
+            AudioManager.instance.OnKeyUnlock();
             hackingProgress = 0;
             unlocked = true;
         }

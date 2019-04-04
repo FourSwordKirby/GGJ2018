@@ -60,6 +60,8 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
 
     IEnumerator TransmitEntity(GameObject player)
     {
+        AudioManager.instance.OnEthernetStart();
+
         currentOwner.GetComponent<ShmupPlayer>().Graze();
         currentOwner.GetComponent<ShmupPlayer>().FreezeVelocity();
 
@@ -89,6 +91,8 @@ public class WirelessPort : MonoBehaviour, ShmupSpawnable
         currentOwner.GetComponent<ShmupPlayer>().Materialize();
 
         this.Deactivate();
+
+        AudioManager.instance.OnEthernetStop();
 
         yield return null;
     }

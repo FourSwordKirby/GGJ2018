@@ -8,7 +8,6 @@ public class LevelManager3 : ShmupLevel {
     public TextAsset openingBanter;
     public TextAsset lockBanter;
     public TextAsset closingBanter;
-    public AudioClip levelBgm;
 
     public SecurityLock FloorOne_GuardedLock;
     public Encounter FloorOne_GuardedLockEncounter;
@@ -63,13 +62,12 @@ public class LevelManager3 : ShmupLevel {
 
     IEnumerator IntroSequence()
     {
+        AudioManager.instance.OnPhase3LevelFadeIn();
         ChapterHud.instance.StartLevel();
         while (!ChapterHud.instance.AnimationFinished())
         {
             yield return null;
         }
-
-        BgmController.instance.PlayBGM(levelBgm);
 
         if (PlayOpeningBanter)
         {
@@ -99,6 +97,9 @@ public class LevelManager3 : ShmupLevel {
 
     IEnumerator EndSequence()
     {
+        AudioManager.instance.OnNextLevelUnlock();
+        AudioManager.instance.OnPhaseAnyLevelFadeOut();
+
         List<string> dialogEntries = DialogEngine.CreateDialogComponents(closingBanter.text);
         ShmupGameManager.instance.PauseGameplay();
         ConversationController.instance.StartConversation(dialogEntries);
@@ -106,8 +107,6 @@ public class LevelManager3 : ShmupLevel {
 
         while (ShmupGameManager.instance.Paused)
             yield return null;
-
-        BgmController.instance.StopBGM();
 
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())

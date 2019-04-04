@@ -59,7 +59,7 @@ public class Barricade : ShmupEntity, ShmupSpawnable {
 
     public void Die()
     {
-        SfxController.instance.PlaySound("Barricade Die");
+        AudioManager.instance.OnHitsEnemy();
 
         destroyed = true;
         selfHurtbox.SetActive(false);

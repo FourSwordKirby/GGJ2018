@@ -17351,7 +17351,6 @@ MonoBehaviour:
   openingBanter: {fileID: 4900000, guid: c6388678cc42f14408b53ac351da5380, type: 3}
   lockBanter: {fileID: 4900000, guid: 4758a024d80cf3e44ae4ac4a772b9673, type: 3}
   closingBanter: {fileID: 4900000, guid: e7bc27efc7734b7418d369b03e615c34, type: 3}
-  levelBgm: {fileID: 8300000, guid: 05a7bab79b9ec68469e90fd2a791f35e, type: 3}
   FloorOne_GuardedLock: {fileID: 216396161}
   FloorOne_GuardedLockEncounter: {fileID: 1782261268}
   FloorOne_Gate: {fileID: 1109636204}

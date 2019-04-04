@@ -141,6 +141,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
 
     void ShootBullet(int bulletStreams, float bulletSpread)
     {
+        AudioManager.instance.OnEnemyShoots();
+
         float deltaAngle = bulletSpread / bulletStreams;
 
         for(int i = 0; i < bulletStreams; i++)
@@ -164,7 +166,7 @@ public class ShmupSimpleEnemy : ShmupEnemy {
 
     public override void OnHit(float damage)
     {
-        SfxController.instance.PlaySound("Bullet Hit Enemy", this.gameObject);
+        AudioManager.instance.OnHitsEnemy();
 
         //this.gameObject.SetActive(false);
         this.health -= damage;
@@ -183,6 +185,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
 
     public override void Die()
     {
+        AudioManager.instance.OnEnemyDies();
+
         this.health = 0;
         anim.SetTrigger("Die");
         CameraControlsTopDown3D.instance.Shake(0.2f, 0.3f);
@@ -191,6 +195,8 @@ public class ShmupSimpleEnemy : ShmupEnemy {
 
     public override void Spawn()
     {
+        AudioManager.instance.OnEnemySpawns();
+
         this.transform.position = spawnLocation;
         this.gameObject.SetActive(true);
     }

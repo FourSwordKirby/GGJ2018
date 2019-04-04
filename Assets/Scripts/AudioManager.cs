@@ -1,6 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
+    public static AudioManager instance;
+
 	private AudioClip Phase4LevelFirst;
 	private AudioClip Phase4LevelLoop;
 	private AudioClip Phase3LevelFirst;
@@ -41,7 +44,15 @@ public class AudioManager : MonoBehaviour {
 	private AudioClip BombCollect;
 	private AudioSource bgm, sfx;
 
-	public void Start()
+    public void Awake()
+    {
+        if (AudioManager.instance == null)
+            instance = this;
+        else if (this != instance)
+            Destroy(this.gameObject);
+    }
+
+    public void Start()
 	{
 		this.bgm = this.gameObject.AddComponent<AudioSource>();
 		this.bgm.loop = true;
@@ -97,7 +108,39 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
-	public void OnBombCollect()
+    public IEnumerator PlayMusic(AudioClip mainTrack, float targetVolume, bool fadeIn, float fadeDuration = 3.0f, AudioClip introTrack = null)
+    {
+        if (fadeIn)
+            bgm.volume = 0.0f;
+
+        if (introTrack != null)
+        {
+            this.bgm.PlayOneShot(introTrack);
+            StartCoroutine(FadeMusicTowards(targetVolume, fadeDuration));
+            yield return new WaitForSeconds(introTrack.length);
+        }
+
+        this.bgm.clip = mainTrack;
+        this.bgm.Play();
+        StartCoroutine(FadeMusicTowards(targetVolume, fadeDuration));
+    }
+
+    // Update is called once per frame
+    public IEnumerator FadeMusicTowards(float targetVolume, float duration = 3.0f)
+    {
+        float timer = 0.0f;
+
+        float startingVolume = bgm.volume;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            this.bgm.volume = Mathf.Lerp(startingVolume, targetVolume, timer / duration);
+            yield return new WaitForEndOfFrame();
+        }
+        yield return null;
+    }
+
+    public void OnBombCollect()
 	{
 		this.sfx.PlayOneShot(this.BombCollect);
 	}
@@ -261,49 +304,26 @@ public class AudioManager : MonoBehaviour {
 
 	public void OnPhase1LevelFadeIn()
 	{
-		this.bgm.PlayOneShot(this.Phase1LevelFirst);
-		this.bgm.clip = this.Phase1LevelLoop;
-		this.bgm.PlayDelayed(this.Phase1LevelFirst.length);
-	}
-
-	public void OnPhase1LevelFadeOut()
-	{
-		this.bgm.volume = 0.999f;
+        StartCoroutine(PlayMusic(this.Phase1LevelLoop, 1.0f, true, 3.0f, this.Phase1LevelFirst));
 	}
 
 	public void OnPhase2LevelFadeIn()
-	{
-		this.bgm.PlayOneShot(this.Phase2LevelFirst);
-		this.bgm.clip = this.Phase2LevelLoop;
-		this.bgm.PlayDelayed(this.Phase2LevelFirst.length);
-	}
-
-	public void OnPhase2LevelFadeOut()
-	{
-		this.bgm.volume = 0.999f;
-	}
+    {
+        StartCoroutine(PlayMusic(this.Phase2LevelLoop, 1.0f, true, 3.0f, this.Phase2LevelFirst));
+    }
 
 	public void OnPhase3LevelFadeIn()
-	{
-		this.bgm.PlayOneShot(this.Phase3LevelFirst);
-		this.bgm.clip = this.Phase3LevelLoop;
-		this.bgm.PlayDelayed(this.Phase3LevelFirst.length);
-	}
-
-	public void OnPhase3LevelFadeOut()
-	{
-		this.bgm.volume = 0.999f;
-	}
+    {
+        StartCoroutine(PlayMusic(this.Phase3LevelLoop, 1.0f, true, 3.0f, this.Phase3LevelFirst));
+    }
 
 	public void OnPhase4LevelFadeIn()
-	{
-		this.bgm.PlayOneShot(this.Phase4LevelFirst);
-		this.bgm.clip = this.Phase4LevelLoop;
-		this.bgm.PlayDelayed(this.Phase4LevelFirst.length);
-	}
+    {
+        StartCoroutine(PlayMusic(this.Phase4LevelLoop, 1.0f, true, 3.0f, this.Phase4LevelFirst));
+    }
 
-	public void OnPhase4LevelFadeOut()
-	{
-		this.bgm.volume = 0.999f;
-	}
+    public void OnPhaseAnyLevelFadeOut()
+    {
+        FadeMusicTowards(0.0f);
+    }
 }

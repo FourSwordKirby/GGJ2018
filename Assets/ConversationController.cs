@@ -48,6 +48,8 @@ public class ConversationController : MonoBehaviour {
 
     private IEnumerator PlayConversation(List<string> dialogComponents)
     {
+        AudioManager.instance.OnDialogueSmallFadein();
+
         conversationFinished = false;
         string speaker = "";
         string dialog = "";
@@ -128,6 +130,8 @@ public class ConversationController : MonoBehaviour {
             {
                 //selfAnimator.SetBool("SpeakingActor1", true);
                 //selfAnimator.SetBool("SpeakingActor2", false);
+                AudioManager.instance.OnLeftSmallSpeak();
+
                 dialogUIActor1.dialogBox.color = new Color(148.0f / 255.0f, 171.0f / 255.0f, 255.0f / 255.0f);
                 dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
                 dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f);
@@ -142,6 +146,8 @@ public class ConversationController : MonoBehaviour {
             {
                 //selfAnimator.SetBool("SpeakingActor1", false);
                 //selfAnimator.SetBool("SpeakingActor2", true);
+                AudioManager.instance.OnRightSmallSpeak();
+
                 dialogUIActor1.dialogBox.color = Color.white;
                 dialogUIActor1.dialogField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
                 dialogUIActor1.speakerField.color = new Color(58.0f / 255.0f, 58.0f / 255.0f, 58.0f / 255.0f, 0.5f);
@@ -197,6 +203,8 @@ public class ConversationController : MonoBehaviour {
 
         selfAnimator.SetTrigger("CloseDialog");
         conversationFinished = true;
+
+        AudioManager.instance.OnDialogueSmallFadeout();
 
         yield return null;
     }

@@ -8,7 +8,6 @@ public class CreditsManager : ShmupLevel {
     public bool PlayOpeningCutscene;
     public TextAsset openingCutscene;
     public float CreditsDelay;
-    public AudioClip creditsBgm;
 
     public List<GameObject> CreditObjects;
 
@@ -48,9 +47,10 @@ public class CreditsManager : ShmupLevel {
                 yield return null;
         }
 
+        AudioManager.instance.OnPhase4LevelFadeIn();
+
         ShmupGameManager.instance.player.gameObject.SetActive(true);
         ShmupGameManager.instance.RespawnPlayer();
-        BgmController.instance.PlayBGM(creditsBgm);
 
         int currentCreditsIndex = 0;
         while(currentCreditsIndex < CreditObjects.Count)
@@ -66,7 +66,7 @@ public class CreditsManager : ShmupLevel {
 
     IEnumerator EndSequence()
     {
-        BgmController.instance.StopBGM();
+        AudioManager.instance.OnPhaseAnyLevelFadeOut();
 
         ChapterHud.instance.EndLevel();
         while (!ChapterHud.instance.AnimationFinished())
