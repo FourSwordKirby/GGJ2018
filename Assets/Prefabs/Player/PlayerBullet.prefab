@@ -164,6 +164,7 @@ MonoBehaviour:
   duration: 10
   model: {fileID: 1075657983212592}
   isPiercing: 0
+  isPlayer: 1
 --- !u!114 &114768445935669516
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class BulletStandard : Bullet
     public GameObject model;
 
     public bool isPiercing;
+    public bool isPlayer;
 
     Rigidbody selfBody;
     bool dead;
@@ -44,7 +45,8 @@ public class BulletStandard : Bullet
 
     public override void OnHit(float damage)
     {
-        AudioManager.instance.OnHitEnemyShot();
+        if(isPlayer)
+            AudioManager.instance.OnHitEnemyShot();
 
         if (!isPiercing)
         {
