@@ -111,7 +111,6 @@ public class DialogUI : MonoBehaviour
         //Prevents the name from flickering
         this.dialogField.text = taggedText;
 
-
         setSpeed (displaySpeed);
     }
 

@@ -1,0 +1,27 @@
+[Show Letterbox] 
+
+[Show 1, Show 2] 
+
+Circe: <Agitated> Ugh, headache. 
+
+Kali: <Neutral> This is Kali connecting in. Hacker C.R.C., are you in?
+
+Circe: <Disappointed> Hah... formal as always aren't you, Kali? As a childhood friend, I'm deeply hurt when you address me like that-
+
+Kali: <UpsetWorried> N-no! That is just a standard procedure! A-anyways, did you make in alright... Circe?
+
+Circe: <Agitated> No problems here. Just a slight headache. 
+
+Circe: I've been on call for the last week and haven't gotten a good nights sleep.
+
+Kali: <UpsetWorried> Oh... You can take a rest for today Circe! If it will endanger the mission-
+
+Circe: <VeryAgitated> Oh be quiet. I've been waiting all day for this hack.
+
+Circe: You said this was a big job didn't you? I gotta dish out some payback for those sleepless nights.
+
+Kali: <Disappointed> Doesn't that karma just come back to bite you...
+
+Kali: <Neutral> Anyways, I'll be switching to the compact interface to save some space on your screen
+
+[Hide Letterbox, Hide 1, Hide 2]

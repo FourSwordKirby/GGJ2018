@@ -4,20 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum ConversationExpressions
-{
-    Normal,
-    Worried,
-    Disappointed,
-    Embarrassed,
-    Annoyed
-}
-
 public class ConversationController : MonoBehaviour {
 
     public Animator selfAnimator;
     public DialogUI dialogUIActor1;
     public DialogUI dialogUIActor2;
+
+    public CharacterPortrait portrait1;
+    public CharacterPortrait portrait2;
 
     private bool conversationFinished;
 
@@ -43,6 +37,8 @@ public class ConversationController : MonoBehaviour {
     {
         dialogUIActor1.displayDialog("", NAME_ACTOR_1);
         dialogUIActor2.displayDialog("", NAME_ACTOR_2);
+        portrait1.DiplayExpression(Expressions.Neutral);
+        portrait2.DiplayExpression(Expressions.Neutral);
         StartCoroutine(PlayConversation(dialog));
     }
 
@@ -160,6 +156,19 @@ public class ConversationController : MonoBehaviour {
             }
             else if (!(speaker == "" && dialog == ""))
                 throw new Exception("This dialog is not supported" + dialogComponents[i] + "/" + speaker + "/" + dialog);
+
+            //Parsing expressions
+            string expression = "";
+            if (dialog.Split('<', '>').Count() >= 3 && dialog.Split('<', '>')[1].Trim().Count() > 1)
+            {
+                expression = dialog.Split('<', '>')[1];
+                dialog = dialog.Split('<', '>')[2].Trim();
+                if (speaker == NAME_ACTOR_1)
+                    portrait1.DiplayExpression((Expressions)Enum.Parse(typeof(Expressions), expression));
+                else if (speaker == NAME_ACTOR_2)
+                    portrait2.DiplayExpression((Expressions)Enum.Parse(typeof(Expressions), expression));
+            }
+
 
             //Showing dialog
             if (!(speaker == "" && dialog == ""))

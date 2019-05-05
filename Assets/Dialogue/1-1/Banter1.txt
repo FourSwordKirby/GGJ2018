@@ -1,0 +1,35 @@
+Kali: I know it's been a bit since your last hack, so I'll go over the basics
+
+Circe: <Bored> Kali please, I don't need any handholding
+
+Kali: <Embarassed> Oh... But I already started the tutorial module
+
+[Tutorial starts] 
+
+Circe: Don't sweat it, I'll just let the prompts play themselves on the screen.
+
+[Resume Gameplay]
+
+Circe: <Agitated> While that happens, let me vent for a bit
+
+Circe: You know that project that my team has been working on?
+
+Kali: <Helpful> You mean website's digital assistant?
+
+Kali: That sounded really interesting!
+
+Circe: It does
+
+Circe: <VeryAgitated> Then you realize that talking to a bot is too much effort
+
+Circe: Anyways, the some idiot decided to upgrade the voice recognition library
+
+Circe: And of course, I was the one stuck fixing all of the compatibility errors
+
+Circe: <MostAgitated> We don't even use anything from the upgrade!
+
+Circe: It's all junk like social media features
+
+Kali: <CautiousWorried> Shouldn't you be having this discussion with the rest of your team?
+
+Circe: <Embarassed> Dammit Kali... you know me in real life, I can't actually do that

@@ -4,20 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum CutsceneExpressions
-{
-    Normal,
-    Worried,
-    Disappointed,
-    Embarrassed,
-    Annoyed
-}
-
 public class CutsceneDialogController : MonoBehaviour
 {
     public Animator selfAnimator;
     public DialogUI dialogUIActor1;
     public DialogUI dialogUIActor2;
+
+    public CharacterPortrait portrait1;
+    public CharacterPortrait portrait2;
 
     private bool cutsceneFinished;
     private bool dialogOpen;
@@ -65,6 +59,8 @@ public class CutsceneDialogController : MonoBehaviour
     public void StartCutscene(List<string> dialog, float autoPlay = 0.0f)
     {
         cutsceneFinished = false;
+        portrait1.DiplayExpression(Expressions.Neutral);
+        portrait2.DiplayExpression(Expressions.Neutral);
         StartCoroutine(PlayCutscene(dialog, autoPlay));
     }
 
@@ -84,7 +80,8 @@ public class CutsceneDialogController : MonoBehaviour
         for (int i = 0; i < dialogComponents.Count; i++)
         {
             string currentDialog = dialogComponents[i];
-
+            
+            //Getting instructions
             string[] instructionPieces = new string[0];
             if (dialogComponents[i].Split('[', ']').Count() >= 3 && dialogComponents[i].Split('[', ']')[0] == "")
             {
@@ -107,8 +104,6 @@ public class CutsceneDialogController : MonoBehaviour
 
             speaker = speaker.Trim();
             dialog = dialog.Trim();
-
-
 
             //Parsing instructions
             foreach (string rawInstruction in instructionPieces)
@@ -165,6 +160,18 @@ public class CutsceneDialogController : MonoBehaviour
             }
             else if(!(speaker == "" && dialog == ""))
                 throw new Exception("This dialog is not supported" + dialogComponents[i] + "/" + speaker + "/" + dialog);
+
+            //Parsing expressions
+            string expression = "";
+            if (dialog.Split('<', '>').Count() >= 3 && dialog.Split('<', '>')[1].Trim().Count() > 1)
+            {
+                expression = dialog.Split('<', '>')[1];
+                dialog = dialog.Split('<', '>')[2].Trim();
+                if (speaker == NAME_ACTOR_1)
+                    portrait1.DiplayExpression((Expressions)Enum.Parse(typeof(Expressions), expression));
+                else if (speaker == NAME_ACTOR_2)
+                    portrait2.DiplayExpression((Expressions)Enum.Parse(typeof(Expressions), expression));
+            }
 
             //Showing dialog
             if (!(speaker == "" && dialog == ""))
